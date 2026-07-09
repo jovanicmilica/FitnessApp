@@ -1,0 +1,380 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.TrainerMainWindow"
+        x:DataType="vm:TrainerMainViewModel"
+        Title="Fitness Mentoring — Trainer"
+        Width="950" Height="750"
+        MinWidth="900" MinHeight="700"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+        Background="#F5F5F5">
+
+    <DockPanel Margin="24">
+
+        <!-- Header -->
+        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 16">
+            <TextBlock Text="Trainer Dashboard"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Foreground="#2C3E50"/>
+            <Button Content="Logout"
+                    Command="{Binding LogoutCommand}"
+                    HorizontalAlignment="Right"
+                    Padding="20,8"
+                    Background="#4EBF7E"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+        </DockPanel>
+
+        <!-- Status/Error poruke -->
+        <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+            <TextBlock Text="{Binding StatusMessage}"
+                       Foreground="#27AE60"
+                       FontWeight="SemiBold"
+                       IsVisible="{Binding StatusMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="#E74C3C"
+                       FontWeight="SemiBold"
+                       IsVisible="{Binding ErrorMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+        </StackPanel>
+
+        <TabControl Background="White">
+
+            <!-- Tab 1: Tutelage Requests -->
+            <TabItem Header="Tutelage Requests">
+                <Grid ColumnDefinitions="*,*" Margin="16">
+
+                    <!-- Lijevo: lista zahtjeva -->
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+                        <TextBlock Text="Pending Requests"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <ListBox ItemsSource="{Binding PendingRequests}"
+                                 SelectedItem="{Binding SelectedPendingRequest}"
+                                 Height="350"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                       <StackPanel Spacing="6">
+                                           <TextBlock Text="{Binding ClientId,
+                                                      StringFormat='👤 Client ID: {0}'}"
+                                                      FontWeight="Bold"
+                                                      Foreground="#2C3E50"/>
+                                           <TextBlock Text="{Binding Status,
+                                                      StringFormat='📋 Status: {0}'}"
+                                                      FontSize="12"
+                                                      Foreground="#555555"/>
+                                       </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Button Content="Approve"
+                                    Command="{Binding ApproveRequestCommand}"
+                                    Padding="24,8"
+                                    Background="#4EBF7E"
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    Cursor="Hand"/>
+                            <Button Content="Reject"
+                                    Command="{Binding RejectRequestCommand}"
+                                    Padding="24,8"
+                                    Background="#FF7070"
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    Cursor="Hand"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <!-- Desno: detalji upitnika -->
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+                        <TextBlock Text="Questionnaire Details"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <StackPanel IsVisible="{Binding SelectedQuestionnaire,
+                                       Converter={x:Static ObjectConverters.IsNotNull}}"
+                                    Spacing="12">
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Goals:"
+                                          FontWeight="Bold"
+                                          Foreground="#333333"
+                                          FontSize="14"/>
+                                <TextBlock Text="{Binding SelectedQuestionnaire.Goals[0]}"
+                                          TextWrapping="Wrap"
+                                          Foreground="#555555"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Location Preference:"
+                                          FontWeight="Bold"
+                                          Foreground="#333333"
+                                          FontSize="14"/>
+                                <TextBlock Text="{Binding SelectedQuestionnaire.LocationPreference}"
+                                          Foreground="#555555"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Time Preference:"
+                                          FontWeight="Bold"
+                                          Foreground="#333333"
+                                          FontSize="14"/>
+                                <TextBlock Text="{Binding SelectedQuestionnaire.TimePreference}"
+                                          Foreground="#555555"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Health Issues:"
+                                          FontWeight="Bold"
+                                          Foreground="#333333"
+                                          FontSize="14"/>
+                                <TextBlock Text="{Binding SelectedQuestionnaire.HealthIssues}"
+                                          TextWrapping="Wrap"
+                                          Foreground="#555555"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <TextBlock Text="Select a request to view questionnaire details."
+                                   Foreground="#999999"
+                                   IsVisible="{Binding SelectedQuestionnaire,
+                                              Converter={x:Static ObjectConverters.IsNull}}"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Tab 2: Create Workout -->
+            <TabItem Header="Create Workout">
+                <Grid ColumnDefinitions="*,*" Margin="16">
+
+                    <!-- Lijevo: aktivna mentorstva + dostupne vježbe -->
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+                        <TextBlock Text="Select Active Tutelage"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <ListBox ItemsSource="{Binding ActiveTutelages}"
+                                 SelectedItem="{Binding SelectedActiveTutelage}"
+                                 Height="120"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                       <StackPanel Spacing="6">
+                                           <TextBlock Text="{Binding ClientId,
+                                                      StringFormat='👤 Client ID: {0}'}"
+                                                      FontWeight="Bold"
+                                                      Foreground="#2C3E50"/>
+                                           <TextBlock Text="{Binding EndDate,
+                                                      StringFormat='⏰ Until: {0:dd/MM/yyyy}'}"
+                                                      FontSize="12"
+                                                      Foreground="#555555"/>
+                                       </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <TextBlock Text="Available Exercises"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <ListBox ItemsSource="{Binding AvailableExercises}"
+                                 SelectedItem="{Binding SelectedAvailableExercise}"
+                                 Height="200"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                       <StackPanel Spacing="6">
+                                           <TextBlock Text="{Binding Name}"
+                                                      FontWeight="Bold"
+                                                      Foreground="#2C3E50"/>
+                                           <TextBlock Text="{Binding Description}"
+                                                      FontSize="12"
+                                                      TextWrapping="Wrap"
+                                                      Foreground="#555555"/>
+                                       </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Button Content="Add to Workout"
+                                Command="{Binding AddExerciseToWorkoutCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,10"
+                                Background="#5BA3D0"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Cursor="Hand"/>
+
+                    </StackPanel>
+
+                    <!-- Desno: workout forma -->
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+                        <TextBlock Text="Workout Details"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <TextBlock Text="Workout Name"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding WorkoutName}"
+                                 Watermark="e.g. Upper Body Strength"
+                                 Padding="12"
+                                 Height="42"
+                                 FontSize="13"/>
+
+                        <TextBlock Text="Selected Exercises"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+
+                        <ListBox ItemsSource="{Binding SelectedExercises}"
+                                 Height="220"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                       <StackPanel Orientation="Horizontal" Spacing="8">
+                                           <TextBlock Text="{Binding Name}"
+                                                      FontWeight="Bold"
+                                                      Foreground="#2C3E50"/>
+                                           <TextBlock Text="{Binding Duration,
+                                                      StringFormat='({0}s)'}"
+                                                      FontSize="12"
+                                                      Foreground="#999999"/>
+                                       </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Button Content="Remove Selected"
+                                Command="{Binding RemoveExerciseFromWorkoutCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,10"
+                                Background="#FF7070"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Cursor="Hand"/>
+
+                        <Button Content="Create Workout"
+                                Command="{Binding CreateWorkoutCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,12"
+                                Background="#4EBF7E"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                FontSize="14"
+                                Cursor="Hand"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Tab 3: My Feedbacks -->
+            <TabItem Header="My Feedbacks">
+                <StackPanel Margin="16" Spacing="12">
+
+                    <TextBlock Text="Feedback from Clients"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#2C3E50"/>
+
+                    <ListBox ItemsSource="{Binding MyFeedbacks}"
+                             Height="450"
+                             Padding="8">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                    <StackPanel Spacing="8">
+                                       <TextBlock Text="{Binding Rating,
+                                                  StringFormat='⭐ Rating: {0}/5'}"
+                                                  FontWeight="Bold"
+                                                  Foreground="#2C3E50"/>
+                                       <TextBlock Text="{Binding Comment}"
+                                                  TextWrapping="Wrap"
+                                                  Foreground="#555555"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </TabItem>
+
+            <!-- Tab 4: Subscription -->
+            <TabItem Header="Subscription">
+                <StackPanel Margin="24" Spacing="16">
+
+                    <TextBlock Text="Subscription Status"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#2C3E50"/>
+
+                    <TextBlock Text="{Binding SubscriptionStatus}"
+                               TextWrapping="Wrap"
+                               Foreground="#555555"
+                               FontSize="14"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Monthly subscription fee: $20.00"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"/>
+
+                    <Button Command="{Binding PaySubscriptionCommand}"
+                        HorizontalAlignment="Left"
+                        Padding="20,12"
+                        Background="{Binding IsSubscriptionPaid,
+                                      Converter={StaticResource BoolToColorConverter},
+                                      ConverterParameter='#27AE60|#3498DB'}"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        FontSize="14"
+                        Cursor="Hand"
+                        IsEnabled="{Binding IsSubscriptionPaid,
+                                    Converter={StaticResource InvertedBoolConverter}}">
+                    
+                    <Button.Content>
+                        <TextBlock Text="{Binding IsSubscriptionPaid,
+                                          Converter={StaticResource BoolToTextConverter},
+                                          ConverterParameter='Paid|Pay $20'}"/>
+                    </Button.Content>
+                </Button>
+
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+
+    </DockPanel>
+
+</Window>
