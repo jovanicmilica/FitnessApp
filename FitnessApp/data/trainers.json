@@ -2,21 +2,21 @@
   {
     "PricePerMonth": 99.99,
     "Status": 1,
-    "Rating": null,
+    "Rating": 0,
     "Id": 1,
     "FirstName": "Michael",
     "LastName": "Williams",
     "Email": "michael.williams@email.com",
-    "Password": "TrainerPass123!"
+    "Password": "password"
   },
   {
     "PricePerMonth": 89.99,
     "Status": 1,
-    "Rating": null,
+    "Rating": 0,
     "Id": 2,
     "FirstName": "Emma",
     "LastName": "Brown",
     "Email": "emma.brown@email.com",
-    "Password": "TrainerPass456!"
+    "Password": "password"
   }
 ]

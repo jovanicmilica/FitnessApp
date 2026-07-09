@@ -66,4 +66,9 @@ public class TrainerRepository
         trainers.RemoveAll(t => t.Id == id);
         Save();
     }
+    
+    public Trainer GetByEmail(string email)
+    {
+        return trainers.FirstOrDefault(t => t.Email == email);
+    }
 }

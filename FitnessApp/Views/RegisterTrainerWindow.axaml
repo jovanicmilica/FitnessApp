@@ -1,0 +1,193 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.RegisterTrainerWindow"
+        x:DataType="vm:RegisterTrainerViewModel"
+        Title="Register as Trainer"
+        Width="500" Height="750"
+        MinWidth="450" MinHeight="700"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+        Background="#F5F5F5">
+
+    <ScrollViewer>
+        <StackPanel Margin="40" Spacing="14">
+
+            <TextBlock Text="Create Trainer Account"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0 0 0 16"
+                       Foreground="#2C3E50"/>
+
+            <!-- Osnovni podaci -->
+            <TextBlock Text="Personal Information"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Foreground="#34495E"
+                       Margin="0 0 0 12"/>
+
+            <TextBlock Text="First Name"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding FirstName}"
+                     Watermark="Enter your first name"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Last Name"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding LastName}"
+                     Watermark="Enter your last name"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Email"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding Email}"
+                     Watermark="Enter your email"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Password"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding Password}"
+                     PasswordChar="*"
+                     Watermark="Enter your password"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Confirm Password"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding ConfirmPassword}"
+                     PasswordChar="*"
+                     Watermark="Confirm your password"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Price per Month ($)"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <NumericUpDown Value="{Binding PricePerMonth}"
+                           Minimum="0"
+                           Increment="5"
+                           FormatString="F2"
+                           Padding="12"
+                           Height="42"
+                           FontSize="14"/>
+
+            <!-- Kvalifikacija -->
+            <Separator Margin="0 12"
+                       Background="#DDDDDD"/>
+            
+            <TextBlock Text="Professional Qualification"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Foreground="#34495E"
+                       Margin="0 0 0 12"/>
+
+            <TextBlock Text="Qualification Name"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding QualificationName}"
+                     Watermark="e.g. Certified Personal Trainer"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Institution"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding QualificationInstitution}"
+                     Watermark="e.g. International Fitness Association"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Certificate URL (optional)"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <TextBox Text="{Binding QualificationCertificateUrl}"
+                     Watermark="https://certificate.com/link"
+                     Padding="12"
+                     Height="42"
+                     FontSize="14"/>
+
+            <TextBlock Text="Date Issued"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#333333"/>
+            <CalendarDatePicker SelectedDate="{Binding QualificationDateIssued}"
+                                HorizontalAlignment="Stretch"
+                                Height="42"/>
+
+            <!-- Poruke -->
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="#E74C3C"
+                       TextWrapping="Wrap"
+                       FontSize="13"
+                       IsVisible="{Binding ErrorMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                       Margin="0 8 0 0"/>
+
+            <TextBlock Text="{Binding SuccessMessage}"
+                       Foreground="#27AE60"
+                       TextWrapping="Wrap"
+                       FontSize="13"
+                       IsVisible="{Binding SuccessMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                       Margin="0 8 0 0"/>
+
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Spacing="10"
+                        Margin="0 16 0 0">
+                <Button Content="Submit Registration"
+                        Command="{Binding RegisterCommand}"
+                        Padding="40,10"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Background="#A966D3"
+                        Foreground="White"
+                        Cursor="Hand"/>
+
+                <Button Content="Back to Login"
+                        Command="{Binding BackToLoginCommand}"
+                        Padding="32,8"
+                        FontSize="13"
+                        Background="#8B8BA3"
+                        Foreground="White"
+                        Cursor="Hand"/>
+            </StackPanel>
+
+            <TextBlock Text="Note: Your account will be reviewed by an administrator before activation."
+                       TextWrapping="Wrap"
+                       Foreground="#666666"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Margin="0 16 0 0"/>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

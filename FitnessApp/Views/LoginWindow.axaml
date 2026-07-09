@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.LoginWindow"
+        x:DataType="vm:LoginViewModel"
+        Title="Fitness Mentoring App — Login"
+        Width="450" Height="650"
+        MinWidth="400" MinHeight="450"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+        Background="#F5F5F5">
+
+    <StackPanel Margin="40" Spacing="16">
+
+        <TextBlock Text="Fitness Mentoring App"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 24"
+                   Foreground="#2C3E50"/>
+
+        <TextBlock Text="Welcome Back"
+                   FontSize="18"
+                   HorizontalAlignment="Center"
+                   Foreground="#555555"
+                   Margin="0 0 0 16"/>
+
+        <TextBlock Text="Email"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding Email}"
+                 Watermark="Enter your email"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <TextBlock Text="Password"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"
+                   Margin="0 8 0 0"/>
+        <TextBox Text="{Binding Password}"
+                 PasswordChar="*"
+                 Watermark="Enter your password"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <!-- Error poruka -->
+        <TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="#E74C3C"
+                   FontSize="13"
+                   IsVisible="{Binding ErrorMessage, 
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                   Margin="0 4 0 0"/>
+
+        <Button Content="Login"
+                Command="{Binding LoginCommand}"
+                HorizontalAlignment="Center"
+                Margin="0 16 0 0"
+                Padding="32,10"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Background="#5BA3D0"
+                Foreground="White"
+                Cursor="Hand"/>
+
+        <Separator Margin="0 12"
+                   Background="#DDDDDD"/>
+
+        <TextBlock Text="Don't have an account?"
+                   HorizontalAlignment="Center"
+                   FontSize="14"
+                   Foreground="#666666"/>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Spacing="10"
+                    Margin="0 8 0 0">
+            <Button Content="Register as Client"
+                    Command="{Binding OpenRegisterClientCommand}"
+                    Padding="28,8"
+                    FontSize="13"
+                    Background="#4EBF7E"
+                    Foreground="White"
+                    Cursor="Hand"/>
+            <Button Content="Register as Trainer"
+                    Command="{Binding OpenRegisterTrainerCommand}"
+                    Padding="28,8"
+                    FontSize="13"
+                    Background="#A966D3"
+                    Foreground="White"
+                    Cursor="Hand"/>
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

@@ -1,0 +1,116 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.RegisterClientWindow"
+        x:DataType="vm:RegisterClientViewModel"
+        Title="Register as Client"
+        Width="450" Height="550"
+        MinWidth="400" MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+        Background="#F5F5F5">
+
+    <ScrollViewer>
+        <StackPanel Margin="40" Spacing="14">
+
+        <TextBlock Text="Create Client Account"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 16"
+                   Foreground="#2C3E50"/>
+
+        <TextBlock Text="First Name"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding FirstName}"
+                 Watermark="Enter your first name"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <TextBlock Text="Last Name"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding LastName}"
+                 Watermark="Enter your last name"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <TextBlock Text="Email"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding Email}"
+                 Watermark="Enter your email"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <TextBlock Text="Password"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding Password}"
+                 PasswordChar="*"
+                 Watermark="Enter your password"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <TextBlock Text="Confirm Password"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
+        <TextBox Text="{Binding ConfirmPassword}"
+                 PasswordChar="*"
+                 Watermark="Confirm your password"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
+
+        <!-- Error poruka -->
+        <TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="#E74C3C"
+                   TextWrapping="Wrap"
+                   FontSize="13"
+                   IsVisible="{Binding ErrorMessage,
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+        <!-- Success poruka -->
+        <TextBlock Text="{Binding SuccessMessage}"
+                   Foreground="#27AE60"
+                   TextWrapping="Wrap"
+                   FontSize="13"
+                   IsVisible="{Binding SuccessMessage,
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Spacing="10"
+                    Margin="0 12 0 0">
+            <Button Content="Register"
+                    Command="{Binding RegisterCommand}"
+                    Padding="40,10"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Background="#4EBF7E"
+                    Foreground="White"
+                    Cursor="Hand"/>
+
+            <Button Content="Back to Login"
+                    Command="{Binding BackToLoginCommand}"
+                    Padding="32,8"
+                    FontSize="13"
+                    Background="#8B8BA3"
+                    Foreground="White"
+                    Cursor="Hand"/>
+        </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>
