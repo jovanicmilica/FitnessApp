@@ -5,7 +5,7 @@
     "FirstName": "John",
     "LastName": "Smith",
     "Email": "john.smith@email.com",
-    "Password": "Password123!"
+    "Password": "password"
   },
   {
     "HealthRecordId": 2,
@@ -13,6 +13,6 @@
     "FirstName": "Sarah",
     "LastName": "Johnson",
     "Email": "sarah.johnson@email.com",
-    "Password": "Password456!"
+    "Password": "password"
   }
 ]

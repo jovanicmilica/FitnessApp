@@ -11,21 +11,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/RegisterClientViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/RegisterClientWindow.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/RegisterClientWindow.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/UserRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/data/clients.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/clients.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/data/trainers.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/trainers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/ref/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/ref/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/refint/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/refint/FitnessApp.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +81,11 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/WorkoutExerciseRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterClientViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Views/RegisterClientWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -81,61 +94,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4812823273005598" />
-      <entry key="MS500" value="2.560767899278154" />
-      <entry key="S2" value="3.3587715906890097" />
-      <entry key="S5" value="3.699738724453498" />
-      <entry key="S10" value="3.8411947995693856" />
-      <entry key="S30" value="3.94635387695149" />
-      <entry key="S60" value="4.100150195519718" />
-      <entry key="M2" value="5.22478794028696" />
-      <entry key="M5" value="8.832564180957903" />
-      <entry key="M10" value="11.61671444999603" />
-      <entry key="M15" value="12.86311481690596" />
-      <entry key="M30" value="14.318858434270377" />
-      <entry key="H1" value="17.12506272180571" />
-      <entry key="H2" value="54.45520916380542" />
-      <entry key="H4" value="189.43144513557164" />
-      <entry key="D1" value="624.1227723562491" />
-      <entry key="W1" value="770.3946920722625" />
+      <entry key="MS100" value="1.474521701188146" />
+      <entry key="MS500" value="4.7747579511859115" />
+      <entry key="S2" value="14.33934461834911" />
+      <entry key="S5" value="29.429118173793825" />
+      <entry key="S10" value="50.664278678046315" />
+      <entry key="S30" value="98.98668232652639" />
+      <entry key="S60" value="142.6534071377114" />
+      <entry key="M2" value="202.13447207036833" />
+      <entry key="M5" value="306.11804326646705" />
+      <entry key="M10" value="387.6015260426625" />
+      <entry key="M15" value="428.28457559772437" />
+      <entry key="M30" value="480.3393567734992" />
+      <entry key="H1" value="513.6480615624291" />
+      <entry key="H2" value="563.5080083788104" />
+      <entry key="H4" value="700.7146233024266" />
+      <entry key="D1" value="1148.1725685813767" />
+      <entry key="W1" value="1301.8566042012862" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="5.63635E-319" />
-      <entry key="S60" value="7.507565631661209E-160" />
-      <entry key="M2" value="2.739993728398155E-80" />
-      <entry key="M5" value="1.4965796223321276E-32" />
-      <entry key="M10" value="1.2233477111320956E-16" />
-      <entry key="M15" value="2.4643361195677694E-11" />
-      <entry key="M30" value="4.964208012933966E-6" />
-      <entry key="H1" value="0.0022280502716352578" />
-      <entry key="H2" value="0.04720222740120737" />
-      <entry key="H4" value="0.21726073598606457" />
-      <entry key="D1" value="0.7753483631902782" />
-      <entry key="W1" value="0.9643037134613285" />
+      <entry key="S2" value="2.5473169939198867E-195" />
+      <entry key="S5" value="1.4535607828461784E-78" />
+      <entry key="S10" value="1.2056370858787537E-39" />
+      <entry key="S30" value="1.0643199419789111E-13" />
+      <entry key="S60" value="3.2623916717324464E-7" />
+      <entry key="M2" value="5.71173500062147E-4" />
+      <entry key="M5" value="0.050432119431248736" />
+      <entry key="M10" value="0.22457096747186434" />
+      <entry key="M15" value="0.3694614014915126" />
+      <entry key="M30" value="0.6078361386059835" />
+      <entry key="H1" value="0.7813016399531627" />
+      <entry key="H2" value="0.9237741910305984" />
+      <entry key="H4" value="1.141664571776373" />
+      <entry key="D1" value="1.7556750955312825" />
+      <entry key="W1" value="1.961152337571243" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0783410292531186" />
-      <entry key="MS500" value="1.8993980545903406" />
-      <entry key="S2" value="2.9523926893100794" />
-      <entry key="S5" value="3.493082595321794" />
-      <entry key="S10" value="3.728612985790117" />
-      <entry key="S30" value="3.9065414281731368" />
-      <entry key="S60" value="4.079479624945442" />
-      <entry key="M2" value="5.212388815754842" />
-      <entry key="M5" value="8.825052453140938" />
-      <entry key="M10" value="11.611984665370334" />
-      <entry key="M15" value="12.859672007424885" />
-      <entry key="M30" value="14.316973780088064" />
-      <entry key="H1" value="17.12628905014523" />
-      <entry key="H2" value="54.50180843571673" />
-      <entry key="H4" value="189.64823999914023" />
-      <entry key="D1" value="624.897957086741" />
-      <entry key="W1" value="771.3589683107625" />
+      <entry key="MS100" value="1.3616229664911699" />
+      <entry key="MS500" value="4.701733961160758" />
+      <entry key="S2" value="14.287557035341672" />
+      <entry key="S5" value="29.387208606236424" />
+      <entry key="S10" value="50.62834287066096" />
+      <entry key="S30" value="98.96315144618008" />
+      <entry key="S60" value="142.63588727948084" />
+      <entry key="M2" value="202.12167436213838" />
+      <entry key="M5" value="306.1578705965003" />
+      <entry key="M10" value="387.81675237093015" />
+      <entry key="M15" value="428.64586070107737" />
+      <entry key="M30" value="480.9415482100792" />
+      <entry key="H1" value="514.4259729883441" />
+      <entry key="H2" value="564.42983978408" />
+      <entry key="H4" value="701.8551167727296" />
+      <entry key="D1" value="1149.9279550711349" />
+      <entry key="W1" value="1303.8177108768482" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -176,7 +189,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1783590020741</updated>
-      <workItem from="1783590023686" duration="11007000" />
+      <workItem from="1783590023686" duration="12572000" />
     </task>
     <task id="LOCAL-00001" summary="add models and enums">
       <option name="closed" value="true" />
@@ -210,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783599338628</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add LoginViewModel and LoginWindow">
+      <option name="closed" value="true" />
+      <created>1783628343118</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1783628343118</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +245,8 @@
     <MESSAGE value="add all repositories" />
     <MESSAGE value="add avalonia project and repositories" />
     <MESSAGE value="add json files with some data" />
-    <option name="LAST_COMMIT_MESSAGE" value="add json files with some data" />
+    <MESSAGE value="add LoginViewModel and LoginWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="add LoginViewModel and LoginWindow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -16,9 +16,6 @@ class Program
         Console.WriteLine("Initializing sample data...\n");
         
         // Initialize sample data (you can comment this out after first run)
-        SeedDataHelper.InitializeSampleData();
-        
-        Console.WriteLine("Launching UI...\n");
         
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);

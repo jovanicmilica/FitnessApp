@@ -1,51 +1,97 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
         x:Class="FitnessApp.Views.LoginWindow"
+        x:DataType="vm:LoginViewModel"
         Title="Fitness Mentoring App — Login"
-        Width="420" Height="400"
+        Width="600" Height="700"
+        MinWidth="500" MinHeight="600"
         WindowStartupLocation="CenterScreen"
-        CanResize="False">
+        CanResize="True"
+        Background="#F5F5F5">
 
-    <StackPanel Margin="48" Spacing="16">
+    <StackPanel Margin="60" Spacing="20">
 
         <TextBlock Text="Fitness Mentoring App"
-                   FontSize="22"
+                   FontSize="32"
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
+                   Margin="0 0 0 24"
+                   Foreground="#2C3E50"/>
+
+        <TextBlock Text="Welcome Back"
+                   FontSize="18"
+                   HorizontalAlignment="Center"
+                   Foreground="#555555"
                    Margin="0 0 0 16"/>
 
-        <TextBlock Text="Email"/>
+        <TextBlock Text="Email"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"/>
         <TextBox Text="{Binding Email}"
-                 Watermark="Enter your email"/>
+                 Watermark="Enter your email"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
 
-        <TextBlock Text="Password"/>
+        <TextBlock Text="Password"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#333333"
+                   Margin="0 8 0 0"/>
         <TextBox Text="{Binding Password}"
                  PasswordChar="*"
-                 Watermark="Enter your password"/>
+                 Watermark="Enter your password"
+                 Padding="12"
+                 Height="42"
+                 FontSize="14"/>
 
         <!-- Error poruka -->
         <TextBlock Text="{Binding ErrorMessage}"
-                   Foreground="Red"
+                   Foreground="#E74C3C"
+                   FontSize="13"
                    IsVisible="{Binding ErrorMessage, 
-                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                   Margin="0 4 0 0"/>
 
         <Button Content="Login"
                 Command="{Binding LoginCommand}"
-                HorizontalAlignment="Stretch"
-                Margin="0 8 0 0"/>
+                HorizontalAlignment="Center"
+                Margin="0 16 0 0"
+                Padding="32,10"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Background="#3498DB"
+                Foreground="White"
+                Cursor="Hand"/>
 
-        <Separator Margin="0 8"/>
+        <Separator Margin="0 12"
+                   Background="#DDDDDD"/>
 
         <TextBlock Text="Don't have an account?"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center"
+                   FontSize="14"
+                   Foreground="#666666"/>
 
-        <StackPanel Orientation="Horizontal"
+        <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    Spacing="12">
+                    Spacing="10"
+                    Margin="0 8 0 0">
             <Button Content="Register as Client"
-                    Command="{Binding OpenRegisterClientCommand}"/>
+                    Command="{Binding OpenRegisterClientCommand}"
+                    Padding="28,8"
+                    FontSize="13"
+                    Background="#2ECC71"
+                    Foreground="White"
+                    Cursor="Hand"/>
             <Button Content="Register as Trainer"
-                    Command="{Binding OpenRegisterTrainerCommand}"/>
+                    Command="{Binding OpenRegisterTrainerCommand}"
+                    Padding="28,8"
+                    FontSize="13"
+                    Background="#9B59B6"
+                    Foreground="White"
+                    Cursor="Hand"/>
         </StackPanel>
 
     </StackPanel>
