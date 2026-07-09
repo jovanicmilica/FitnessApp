@@ -35,25 +35,21 @@
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Enums/FeedbackTargetType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Enums/PaymentType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Enums/TrainerStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Enums/TutelageStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Enums/WorkoutStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Administrator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Client.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Exercise.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Feedback.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/HealthRecord.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Message.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Payment.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Qualification.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Questionnaire.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Trainer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Tutelage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Workout.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/WorkoutExercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Administrator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Client.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Exercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Feedback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/HealthRecord.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Message.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Payment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Qualification.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Questionnaire.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Tutelage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Workout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -62,61 +58,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4267016553784964" />
-      <entry key="MS500" value="3.2112253663767274" />
-      <entry key="S2" value="4.4247944690382806" />
-      <entry key="S5" value="4.757100460470152" />
-      <entry key="S10" value="4.87931036633118" />
-      <entry key="S30" value="5.576002233061685" />
-      <entry key="S60" value="9.981964930706713" />
-      <entry key="M2" value="27.73523045016882" />
-      <entry key="M5" value="76.38163595286561" />
-      <entry key="M10" value="116.05058730253756" />
-      <entry key="M15" value="134.8084978692802" />
-      <entry key="M30" value="157.46918969216446" />
-      <entry key="H1" value="170.55560088102806" />
-      <entry key="H2" value="177.59828840630172" />
-      <entry key="H4" value="181.25297789716822" />
-      <entry key="D1" value="184.36897166198628" />
-      <entry key="W1" value="184.90969181501333" />
+      <entry key="MS100" value="1.001694947062783" />
+      <entry key="MS500" value="1.4904409222863744" />
+      <entry key="S2" value="3.7385728550267165" />
+      <entry key="S5" value="5.623644796573644" />
+      <entry key="S10" value="6.6486518821300225" />
+      <entry key="S30" value="7.90964236982167" />
+      <entry key="S60" value="11.307442598190814" />
+      <entry key="M2" value="20.313397365174318" />
+      <entry key="M5" value="41.25771361075797" />
+      <entry key="M10" value="77.8098231110861" />
+      <entry key="M15" value="114.10522957139432" />
+      <entry key="M30" value="189.53635368359215" />
+      <entry key="H1" value="256.27058791012985" />
+      <entry key="H2" value="301.39289717526884" />
+      <entry key="H4" value="327.73511754727645" />
+      <entry key="D1" value="351.9052826779915" />
+      <entry key="W1" value="356.26666608854896" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="MS500" value="3.901508047096795E-83" />
+      <entry key="S2" value="2.499240941903939E-21" />
+      <entry key="S5" value="5.7427941684087766E-9" />
+      <entry key="S10" value="7.578122569877567E-5" />
+      <entry key="S30" value="0.04231755251089646" />
+      <entry key="S60" value="0.2057123052004826" />
+      <entry key="M2" value="0.45355518429457137" />
+      <entry key="M5" value="0.7288733212843924" />
+      <entry key="M10" value="0.8537407810831062" />
+      <entry key="M15" value="0.8999478658214024" />
+      <entry key="M30" value="0.9486558205278682" />
+      <entry key="H1" value="0.9739896408729757" />
+      <entry key="H2" value="0.986909135064103" />
+      <entry key="H4" value="0.9934330048191988" />
+      <entry key="D1" value="0.9989024939070733" />
+      <entry key="W1" value="0.9998431396190538" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2815344166009848" />
-      <entry key="MS500" value="3.1191838914894334" />
-      <entry key="S2" value="4.391314156351455" />
-      <entry key="S5" value="4.742556337202746" />
-      <entry key="S10" value="4.871827861600452" />
-      <entry key="S30" value="5.5732210007500305" />
-      <entry key="S60" value="9.979721904235417" />
-      <entry key="M2" value="27.73234643333542" />
-      <entry key="M5" value="76.37833745398791" />
-      <entry key="M10" value="116.04796748198099" />
-      <entry key="M15" value="134.80642980950518" />
-      <entry key="M30" value="157.4679558781938" />
-      <entry key="H1" value="170.55492503866813" />
-      <entry key="H2" value="177.59793445202828" />
-      <entry key="H4" value="181.25279673691372" />
-      <entry key="D1" value="184.368940872164" />
-      <entry key="W1" value="184.90968740165462" />
+      <entry key="MS100" value="0.928168941767884" />
+      <entry key="MS500" value="1.4680069873633705" />
+      <entry key="S2" value="3.7245269590906944" />
+      <entry key="S5" value="5.615233774781352" />
+      <entry key="S10" value="6.643755792184086" />
+      <entry key="S30" value="7.94820013220964" />
+      <entry key="S60" value="11.507193959578297" />
+      <entry key="M2" value="20.760473929935884" />
+      <entry key="M5" value="41.982083268996504" />
+      <entry key="M10" value="78.66044369178891" />
+      <entry key="M15" value="115.00260233239806" />
+      <entry key="M30" value="190.48320809967598" />
+      <entry key="H1" value="257.2434444916237" />
+      <entry key="H2" value="302.3791599389154" />
+      <entry key="H4" value="328.72820384799167" />
+      <entry key="D1" value="352.9041237702565" />
+      <entry key="W1" value="357.26650036295734" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -139,11 +135,13 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/repositories",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -154,7 +152,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1783590020741</updated>
-      <workItem from="1783590023686" duration="2857000" />
+      <workItem from="1783590023686" duration="4733000" />
     </task>
     <task id="LOCAL-00001" summary="add models and enums">
       <option name="closed" value="true" />
@@ -164,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1783594358525</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add all repositories">
+      <option name="closed" value="true" />
+      <created>1783595241235</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1783595241235</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add avalonia project and repositories">
+      <option name="closed" value="true" />
+      <created>1783596589155</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1783596589155</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +189,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="add models and enums" />
-    <option name="LAST_COMMIT_MESSAGE" value="add models and enums" />
+    <MESSAGE value="add all repositories" />
+    <MESSAGE value="add avalonia project and repositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="add avalonia project and repositories" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
