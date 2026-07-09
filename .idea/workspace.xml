@@ -11,9 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/AdminMainWindow.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/AdminMainWindow.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
@@ -56,6 +57,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/FitnessApp/App.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/TrainerStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Helpers/SeedDataHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Administrator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Client.cs" root0="SKIP_HIGHLIGHTING" />
@@ -77,10 +79,12 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/WorkoutExerciseRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterClientViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/AdminMainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/LoginWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/RegisterClientWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/RegisterTrainerWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
@@ -92,61 +96,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0065695032448803" />
-      <entry key="MS500" value="1.3708781041621294" />
-      <entry key="S2" value="2.2084892204405455" />
-      <entry key="S5" value="2.9927314836511316" />
-      <entry key="S10" value="4.245394555316633" />
-      <entry key="S30" value="24.625408854952042" />
-      <entry key="S60" value="55.237936787823315" />
-      <entry key="M2" value="99.83185934876661" />
-      <entry key="M5" value="238.57577491180808" />
-      <entry key="M10" value="433.4929418940571" />
-      <entry key="M15" value="562.3802120172434" />
-      <entry key="M30" value="757.7749294207683" />
-      <entry key="H1" value="894.8515971954248" />
-      <entry key="H2" value="1005.0393719023853" />
-      <entry key="H4" value="1172.5698398911036" />
-      <entry key="D1" value="1653.8498583693777" />
-      <entry key="W1" value="1817.053580376136" />
+      <entry key="MS100" value="1.6753505334862009" />
+      <entry key="MS500" value="5.410665854667659" />
+      <entry key="S2" value="15.516556226768591" />
+      <entry key="S5" value="25.21893294903229" />
+      <entry key="S10" value="30.96801464827162" />
+      <entry key="S30" value="36.38767427530008" />
+      <entry key="S60" value="42.76020296659828" />
+      <entry key="M2" value="65.68692080553959" />
+      <entry key="M5" value="173.02975260181952" />
+      <entry key="M10" value="363.6747340546891" />
+      <entry key="M15" value="507.7495499965074" />
+      <entry key="M30" value="746.4681475098529" />
+      <entry key="H1" value="925.2817439981401" />
+      <entry key="H2" value="1063.2796919137052" />
+      <entry key="H4" value="1246.033730333253" />
+      <entry key="D1" value="1743.790044357906" />
+      <entry key="W1" value="1911.2597956185245" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="9.742415184519354E-163" />
-      <entry key="S2" value="3.1417140801173487E-41" />
-      <entry key="S5" value="6.293129421899448E-17" />
-      <entry key="S10" value="7.932924695154649E-9" />
-      <entry key="S30" value="0.0019943946962239587" />
-      <entry key="S60" value="0.044658646379362996" />
-      <entry key="M2" value="0.2113274689323215" />
-      <entry key="M5" value="0.5417454524957074" />
-      <entry key="M10" value="0.8016345581535917" />
-      <entry key="M15" value="0.9807641620819968" />
-      <entry key="M30" value="1.3113779279513207" />
-      <entry key="H1" value="1.5910398401371761" />
-      <entry key="H2" value="1.8115043720946966" />
-      <entry key="H4" value="2.0739026524086146" />
-      <entry key="D1" value="2.7391590319845323" />
-      <entry key="W1" value="2.9585444579524522" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.3519344512963826E-97" />
+      <entry key="S5" value="1.7880606845305518E-39" />
+      <entry key="S10" value="4.2285466587594194E-20" />
+      <entry key="S30" value="3.4838841827962817E-7" />
+      <entry key="S60" value="5.902443716943361E-4" />
+      <entry key="M2" value="0.02429512294488345" />
+      <entry key="M5" value="0.22804498936781517" />
+      <entry key="M10" value="0.5201026434618624" />
+      <entry key="M15" value="0.7350321600097868" />
+      <entry key="M30" value="1.1352689145251142" />
+      <entry key="H1" value="1.4803571068255406" />
+      <entry key="H2" value="1.7473588571328291" />
+      <entry key="H4" value="2.03685318568394" />
+      <entry key="D1" value="2.730941984280273" />
+      <entry key="W1" value="2.9572749435007033" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.933321319823938" />
-      <entry key="MS500" value="1.1867947014864475" />
-      <entry key="S2" value="2.087088194965081" />
-      <entry key="S5" value="2.93073216499074" />
-      <entry key="S10" value="4.211014953815488" />
-      <entry key="S30" value="24.609709593253797" />
-      <entry key="S60" value="55.26473396200678" />
-      <entry key="M2" value="100.02491283930495" />
-      <entry key="M5" value="239.10270814872797" />
-      <entry key="M10" value="434.2826456069686" />
-      <entry key="M15" value="563.3505807802521" />
-      <entry key="M30" value="759.0787927392159" />
-      <entry key="H1" value="896.4378949231341" />
-      <entry key="H2" value="1006.8481090134356" />
-      <entry key="H4" value="1174.6421172273435" />
-      <entry key="D1" value="1656.5886450612938" />
-      <entry key="W1" value="1820.0120669014375" />
+      <entry key="MS100" value="1.5828355071683988" />
+      <entry key="MS500" value="5.359304502622923" />
+      <entry key="S2" value="15.4816685242059" />
+      <entry key="S5" value="25.19569240600902" />
+      <entry key="S10" value="30.953512696535423" />
+      <entry key="S30" value="36.38191848624314" />
+      <entry key="S60" value="42.75723553288991" />
+      <entry key="M2" value="65.7069857908454" />
+      <entry key="M5" value="173.2504289295713" />
+      <entry key="M10" value="364.18645398697385" />
+      <entry key="M15" value="508.476343725136" />
+      <entry key="M30" value="747.5966764967757" />
+      <entry key="H1" value="926.7575688071263" />
+      <entry key="H2" value="1065.0243207288192" />
+      <entry key="H4" value="1248.0689566676967" />
+      <entry key="D1" value="1746.5206099979162" />
+      <entry key="W1" value="1914.2170119219963" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -170,7 +174,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/login",
+    "git-widget-placeholder": "feature/client-panel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
