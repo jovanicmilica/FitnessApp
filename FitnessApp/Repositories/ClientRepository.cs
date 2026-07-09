@@ -66,4 +66,9 @@ public class ClientRepository
         clients.RemoveAll(c => c.Id == id);
         Save();
     }
+    
+    public Client GetByEmail(string email)
+    {
+        return clients.FirstOrDefault(c => c.Email == email);
+    }
 }

@@ -1,0 +1,53 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="FitnessApp.Views.LoginWindow"
+        Title="Fitness Mentoring App — Login"
+        Width="420" Height="400"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False">
+
+    <StackPanel Margin="48" Spacing="16">
+
+        <TextBlock Text="Fitness Mentoring App"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 16"/>
+
+        <TextBlock Text="Email"/>
+        <TextBox Text="{Binding Email}"
+                 Watermark="Enter your email"/>
+
+        <TextBlock Text="Password"/>
+        <TextBox Text="{Binding Password}"
+                 PasswordChar="*"
+                 Watermark="Enter your password"/>
+
+        <!-- Error poruka -->
+        <TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="Red"
+                   IsVisible="{Binding ErrorMessage, 
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+        <Button Content="Login"
+                Command="{Binding LoginCommand}"
+                HorizontalAlignment="Stretch"
+                Margin="0 8 0 0"/>
+
+        <Separator Margin="0 8"/>
+
+        <TextBlock Text="Don't have an account?"
+                   HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="12">
+            <Button Content="Register as Client"
+                    Command="{Binding OpenRegisterClientCommand}"/>
+            <Button Content="Register as Trainer"
+                    Command="{Binding OpenRegisterTrainerCommand}"/>
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

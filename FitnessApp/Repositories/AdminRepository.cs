@@ -66,4 +66,9 @@ public class AdminRepository
         admins.RemoveAll(a => a.Id == id);
         Save();
     }
+    
+    public Administrator GetByEmail(string email)
+    {
+        return admins.FirstOrDefault(t => t.Email == email);
+    }
 }
