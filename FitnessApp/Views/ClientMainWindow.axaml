@@ -1,0 +1,269 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.ClientMainWindow"
+        x:DataType="vm:ClientMainViewModel"
+        Title="Fitness Mentoring — Client"
+        Width="900" Height="700"
+        MinWidth="850" MinHeight="650"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
+        Background="#F5F5F5">
+
+    <DockPanel Margin="24">
+
+        <!-- Header -->
+        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 16">
+            <TextBlock Text="Welcome!"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Foreground="#2C3E50"/>
+            <Button Content="Logout"
+                    Command="{Binding LogoutCommand}"
+                    HorizontalAlignment="Right"
+                    Padding="20,8"
+                    Background="#4EBF7E"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+        </DockPanel>
+
+        <!-- Status/Error poruke -->
+        <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+            <TextBlock Text="{Binding StatusMessage}"
+                       Foreground="#27AE60"
+                       FontWeight="SemiBold"
+                       IsVisible="{Binding StatusMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="#E74C3C"
+                       FontWeight="SemiBold"
+                       IsVisible="{Binding ErrorMessage,
+                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+        </StackPanel>
+
+        <!-- Glavni sadržaj — TabControl -->
+        <TabControl Background="White">
+
+            <!-- Tab 1: Search Trainers -->
+            <TabItem Header="Search Trainers">
+                <Grid ColumnDefinitions="*,*" Margin="16">
+
+                    <!-- Lijevo: lista trenera -->
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+                        <TextBlock Text="Find Your Trainer"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBox Text="{Binding SearchCriteria}"
+                                     Watermark="Search by name..."
+                                     Padding="12"
+                                     Height="42"
+                                     Width="200"
+                                     FontSize="14"/>
+                            <Button Content="Search"
+                                    Command="{Binding SearchTrainersCommand}"
+                                    Padding="24,8"
+                                    Background="#5BA3D0"
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    Cursor="Hand"/>
+                        </StackPanel>
+
+                        <ListBox ItemsSource="{Binding AvailableTrainers}"
+                                 SelectedItem="{Binding SelectedTrainer}"
+                                 Height="400"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                        <StackPanel Spacing="6">
+                                            <TextBlock FontWeight="Bold" Foreground="#2C3E50">
+                                                <Run Text="{Binding FirstName}"/>
+                                                <Run Text="{Binding LastName}"/>
+                                            </TextBlock>
+                                            <TextBlock Text="{Binding PricePerMonth,
+                                                       StringFormat='💰 ${0:F2}/month'}"
+                                                       FontSize="12"
+                                                       Foreground="#555555"/>
+                                            <TextBlock Text="{Binding Rating,
+                                                       StringFormat='⭐ Rating: {0:F1}'}"
+                                                       FontSize="12"
+                                                       Foreground="#555555"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </StackPanel>
+
+                    <!-- Desno: forma za zahtjev -->
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+                        <TextBlock Text="Send Request"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <TextBlock Text="Your Goals"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding Goals}"
+                                 Watermark="e.g. Lose weight, build muscle..."
+                                 Height="70"
+                                 Padding="12"
+                                 FontSize="13"
+                                 AcceptsReturn="True"/>
+
+                        <TextBlock Text="Location Preference"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding LocationPreference}"
+                                 Watermark="e.g. Gym, Home, Outdoor"
+                                 Padding="12"
+                                 Height="42"
+                                 FontSize="13"/>
+
+                        <TextBlock Text="Time Preference"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding TimePreference}"
+                                 Watermark="e.g. Mornings, Weekends"
+                                 Padding="12"
+                                 Height="42"
+                                 FontSize="13"/>
+
+                        <TextBlock Text="Health Issues (optional)"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding HealthIssues}"
+                                 Watermark="e.g. Bad knee, asthma..."
+                                 Height="70"
+                                 Padding="12"
+                                 FontSize="13"
+                                 AcceptsReturn="True"/>
+
+                        <Button Content="Send Request"
+                                Command="{Binding SendTutelageRequestCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,12"
+                                Background="#4EBF7E"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                FontSize="14"
+                                Cursor="Hand"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Tab 2: My Tutelages -->
+            <TabItem Header="My Tutelages">
+                <Grid ColumnDefinitions="*,*" Margin="16">
+
+                    <!-- Lijevo: lista mentorstva -->
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+                        <TextBlock Text="My Tutelages"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <ListBox ItemsSource="{Binding MyTutelages}"
+                                 SelectedItem="{Binding SelectedTutelage}"
+                                 Height="380"
+                                 Padding="8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                        <StackPanel Spacing="6">
+                                            <TextBlock Text="{Binding Status,
+                                                       StringFormat='📋 Status: {0}'}"
+                                                       FontWeight="Bold"
+                                                       Foreground="#2C3E50"/>
+                                            <TextBlock Text="{Binding StartDate,
+                                                       StringFormat='📅 Start: {0:dd/MM/yyyy}'}"
+                                                       FontSize="12"
+                                                       Foreground="#555555"/>
+                                            <TextBlock Text="{Binding EndDate,
+                                                       StringFormat='⏰ End: {0:dd/MM/yyyy}'}"
+                                                       FontSize="12"
+                                                       Foreground="#555555"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Button Content="Pay for Tutelage"
+                                Command="{Binding PayForTutelageCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,10"
+                                Background="#FFA04D"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Cursor="Hand"/>
+
+                    </StackPanel>
+
+                    <!-- Desno: feedback forma -->
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+                        <TextBlock Text="Leave Feedback"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <TextBlock Text="Rating (1-5)"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <NumericUpDown Value="{Binding FeedbackRating}"
+                                       Minimum="1"
+                                       Maximum="5"
+                                       Increment="1"
+                                       Padding="12"
+                                       Height="42"
+                                       FontSize="13"/>
+
+                        <TextBlock Text="Comment"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding FeedbackComment}"
+                                 Watermark="Share your experience..."
+                                 Height="120"
+                                 Padding="12"
+                                 FontSize="13"
+                                 AcceptsReturn="True"/>
+
+                        <Button Content="Submit Feedback"
+                                Command="{Binding LeaveFeedbackCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="20,12"
+                                Background="#A966D3"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                FontSize="14"
+                                Cursor="Hand"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </DockPanel>
+
+</Window>

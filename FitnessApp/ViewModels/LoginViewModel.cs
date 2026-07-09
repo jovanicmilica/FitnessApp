@@ -43,7 +43,6 @@ public partial class LoginViewModel : ObservableObject
         }
 
         // Provjeri Client
-        /*
         Client client = clientRepository.GetByEmail(Email);
         if (client != null && client.Password == Password)
         {
@@ -54,6 +53,7 @@ public partial class LoginViewModel : ObservableObject
             return;
         }
 
+        /*
         // Provjeri Trainer
         Trainer trainer = trainerRepository.GetByEmail(Email);
         if (trainer != null && trainer.Password == Password)
