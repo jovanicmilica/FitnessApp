@@ -10,7 +10,9 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="" />
+    <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Repositories/ClientRepository.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Workout.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/WorkoutExercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Repositories/ClientRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -62,23 +65,23 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4267016553784964" />
-      <entry key="MS500" value="3.2112253663767274" />
-      <entry key="S2" value="4.4247944690382806" />
-      <entry key="S5" value="4.757100460470152" />
-      <entry key="S10" value="4.87931036633118" />
-      <entry key="S30" value="5.576002233061685" />
-      <entry key="S60" value="9.981964930706713" />
-      <entry key="M2" value="27.73523045016882" />
-      <entry key="M5" value="76.38163595286561" />
-      <entry key="M10" value="116.05058730253756" />
-      <entry key="M15" value="134.8084978692802" />
-      <entry key="M30" value="157.46918969216446" />
-      <entry key="H1" value="170.55560088102806" />
-      <entry key="H2" value="177.59828840630172" />
-      <entry key="H4" value="181.25297789716822" />
-      <entry key="D1" value="184.36897166198628" />
-      <entry key="W1" value="184.90969181501333" />
+      <entry key="MS100" value="1.677566179348536" />
+      <entry key="MS500" value="4.695438153447922" />
+      <entry key="S2" value="12.752704679061159" />
+      <entry key="S5" value="27.02978173442639" />
+      <entry key="S10" value="40.239789458331025" />
+      <entry key="S30" value="59.733567034020574" />
+      <entry key="S60" value="70.35276346748742" />
+      <entry key="M2" value="79.07244533689617" />
+      <entry key="M5" value="104.7729506926187" />
+      <entry key="M10" value="146.80554117985065" />
+      <entry key="M15" value="174.34013994188768" />
+      <entry key="M30" value="214.35655142294928" />
+      <entry key="H1" value="240.85749553061316" />
+      <entry key="H2" value="256.1500967535377" />
+      <entry key="H4" value="264.37033248735975" />
+      <entry key="D1" value="271.5323919943107" />
+      <entry key="W1" value="272.7896114153106" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -100,23 +103,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2815344166009848" />
-      <entry key="MS500" value="3.1191838914894334" />
-      <entry key="S2" value="4.391314156351455" />
-      <entry key="S5" value="4.742556337202746" />
-      <entry key="S10" value="4.871827861600452" />
-      <entry key="S30" value="5.5732210007500305" />
-      <entry key="S60" value="9.979721904235417" />
-      <entry key="M2" value="27.73234643333542" />
-      <entry key="M5" value="76.37833745398791" />
-      <entry key="M10" value="116.04796748198099" />
-      <entry key="M15" value="134.80642980950518" />
-      <entry key="M30" value="157.4679558781938" />
-      <entry key="H1" value="170.55492503866813" />
-      <entry key="H2" value="177.59793445202828" />
-      <entry key="H4" value="181.25279673691372" />
-      <entry key="D1" value="184.368940872164" />
-      <entry key="W1" value="184.90968740165462" />
+      <entry key="MS100" value="1.5877086580247675" />
+      <entry key="MS500" value="4.642059336695506" />
+      <entry key="S2" value="12.716644390558313" />
+      <entry key="S5" value="26.998774035234437" />
+      <entry key="S10" value="40.21633340929383" />
+      <entry key="S30" value="59.721014320949074" />
+      <entry key="S60" value="70.34494206915805" />
+      <entry key="M2" value="79.06783484118141" />
+      <entry key="M5" value="104.77006102511433" />
+      <entry key="M10" value="146.80314074768768" />
+      <entry key="M15" value="174.33810292738235" />
+      <entry key="M30" value="214.35520675423743" />
+      <entry key="H1" value="240.8567129580812" />
+      <entry key="H2" value="256.14967332005574" />
+      <entry key="H4" value="264.370112083627" />
+      <entry key="D1" value="271.5323539946645" />
+      <entry key="W1" value="272.78960595499336" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -139,11 +142,13 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/repositories",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -154,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1783590020741</updated>
-      <workItem from="1783590023686" duration="2857000" />
+      <workItem from="1783590023686" duration="3258000" />
     </task>
     <task id="LOCAL-00001" summary="add models and enums">
       <option name="closed" value="true" />
