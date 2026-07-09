@@ -18,7 +18,7 @@ public class Trainer : User
     public Questionnaire ReviewTutelageRequest(int tutelageId) { return null; }
     public void RespondToTutelageRequest(int tutelageId, bool approve) { }
     public List<Exercise> BrowseExercises() { return null; }
-    public Workout CreateWorkout(int clientId, List<int> exerciseIds) { return null; }
+    public Workout CreateWorkout(int clientId) { return null; }
     public void PaySubscription(decimal amount) { }
     public void SendMessage(string content, int tutelageId) { }
     public double CalculateRating() { return 0; }
