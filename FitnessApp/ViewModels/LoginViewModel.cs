@@ -80,14 +80,12 @@ public partial class LoginViewModel : ObservableObject
             CloseRequested?.Invoke();
             return;
         }
+        
+         */
 
         // Ako nista nije pronadjeno
         ErrorMessage = "Invalid email or password.";
-        */
-
-        // TEST: Ispis ko je ulogovan
-        Console.WriteLine($"✓ Login attempt with email: {Email}");
-        ErrorMessage = $"Logged in as: {Email}";
+       
     }
 
     [RelayCommand]
@@ -101,11 +99,9 @@ public partial class LoginViewModel : ObservableObject
     [RelayCommand]
     private void OpenRegisterTrainer()
     {
-        /*
         var window = new RegisterTrainerWindow();
         window.DataContext = new RegisterTrainerViewModel();
         window.Show();
-        */
     }
 
     // Event za zatvaranje prozora iz ViewModela

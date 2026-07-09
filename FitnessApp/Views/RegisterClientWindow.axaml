@@ -4,13 +4,14 @@
         x:Class="FitnessApp.Views.RegisterClientWindow"
         x:DataType="vm:RegisterClientViewModel"
         Title="Register as Client"
-        Width="600" Height="750"
-        MinWidth="500" MinHeight="650"
+        Width="450" Height="550"
+        MinWidth="400" MinHeight="500"
         WindowStartupLocation="CenterScreen"
         CanResize="True"
         Background="#F5F5F5">
 
-    <StackPanel Margin="60" Spacing="16">
+    <ScrollViewer>
+        <StackPanel Margin="40" Spacing="14">
 
         <TextBlock Text="Create Client Account"
                    FontSize="28"
@@ -109,6 +110,7 @@
                     Cursor="Hand"/>
         </StackPanel>
 
-    </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 
 </Window>

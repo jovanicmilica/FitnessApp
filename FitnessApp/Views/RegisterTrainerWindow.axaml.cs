@@ -4,9 +4,9 @@ using FitnessApp.ViewModels;
 
 namespace FitnessApp.Views;
 
-public partial class RegisterClientWindow : Window
+public partial class RegisterTrainerWindow : Window
 {
-    public RegisterClientWindow()
+    public RegisterTrainerWindow()
     {
         InitializeComponent();
     }
@@ -15,7 +15,7 @@ public partial class RegisterClientWindow : Window
     {
         base.OnDataContextChanged(e);
         
-        if (DataContext is RegisterClientViewModel viewModel)
+        if (DataContext is RegisterTrainerViewModel viewModel)
         {
             viewModel.CloseRequested += () => this.Close();
         }

@@ -40,3 +40,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Korisnik/Desktop/FitnessApp/FitnessApp/Views/RegisterClientWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Korisnik/Desktop/FitnessApp/FitnessApp/Views/RegisterTrainerWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

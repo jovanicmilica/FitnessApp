@@ -4,13 +4,13 @@
         x:Class="FitnessApp.Views.LoginWindow"
         x:DataType="vm:LoginViewModel"
         Title="Fitness Mentoring App — Login"
-        Width="600" Height="700"
-        MinWidth="500" MinHeight="600"
+        Width="450" Height="650"
+        MinWidth="400" MinHeight="450"
         WindowStartupLocation="CenterScreen"
         CanResize="True"
         Background="#F5F5F5">
 
-    <StackPanel Margin="60" Spacing="20">
+    <StackPanel Margin="40" Spacing="16">
 
         <TextBlock Text="Fitness Mentoring App"
                    FontSize="32"
