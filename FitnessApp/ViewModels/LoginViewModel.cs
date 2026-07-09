@@ -52,8 +52,7 @@ public partial class LoginViewModel : ObservableObject
             CloseRequested?.Invoke();
             return;
         }
-
-        /*
+        
         // Provjeri Trainer
         Trainer trainer = trainerRepository.GetByEmail(Email);
         if (trainer != null && trainer.Password == Password)
@@ -69,8 +68,7 @@ public partial class LoginViewModel : ObservableObject
             CloseRequested?.Invoke();
             return;
         }
-        */
-
+        
         // Provjeri Administrator
         Administrator admin = adminRepository.GetByEmail(Email);
         if (admin != null && admin.Password == Password)

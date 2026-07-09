@@ -1,10 +1,146 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:FitnessApp.Converters"
              x:Class="FitnessApp.App"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Resources>
+        <!-- ============ KONVERTERI ============ -->
+        
+        <!-- Bool konverteri -->
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:BoolToPaidConverter x:Key="BoolToPaidConverter"/>
+        <converters:BoolToTextConverter x:Key="BoolToTextConverter"/>
+        <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        
+        <!-- Object konverteri -->
+        <converters:IsNotNullConverter x:Key="IsNotNullConverter"/>
+        <converters:IsNullConverter x:Key="IsNullConverter"/>
+        
+        <!-- String konverteri -->
+        <converters:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter"/>
+        
+        <!-- Aliasi -->
+        <converters:IsNotNullConverter x:Key="ObjectIsNotNull"/>
+        <converters:IsNullConverter x:Key="ObjectIsNull"/>
+        <converters:IsNotNullOrEmptyConverter x:Key="StringIsNotNullOrEmpty"/>
+    </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
+        
+        <!-- ============ GLOBALNI STILOVI ============ -->
+        
+        <!-- Stil za naslove -->
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+        </Style>
+        
+        <Style Selector="TextBlock.h2">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+        </Style>
+        
+        <!-- Stil za primarni dugme -->
+        <Style Selector="Button.primary">
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style Selector="Button.primary:pointerover">
+            <Setter Property="Background" Value="#2980B9"/>
+        </Style>
+        
+        <!-- Stil za success dugme (zeleno) -->
+        <Style Selector="Button.success">
+            <Setter Property="Background" Value="#27AE60"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style Selector="Button.success:pointerover">
+            <Setter Property="Background" Value="#219A52"/>
+        </Style>
+        
+        <!-- Stil za danger dugme (crveno) -->
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#E74C3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style Selector="Button.danger:pointerover">
+            <Setter Property="Background" Value="#C0392B"/>
+        </Style>
+        
+        <!-- Stil za warning dugme (narandžasto) -->
+        <Style Selector="Button.warning">
+            <Setter Property="Background" Value="#F39C12"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style Selector="Button.warning:pointerover">
+            <Setter Property="Background" Value="#E67E22"/>
+        </Style>
+        
+        <!-- Stil za link dugme - UKLONJEN TextDecorations jer ne postoji na Button -->
+        <Style Selector="Button.link">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#3498DB"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <!-- TextDecorations ne postoji na Button, pa koristimo Border za underline -->
+        </Style>
+        
+        <Style Selector="Button.link:pointerover">
+            <Setter Property="Foreground" Value="#2980B9"/>
+        </Style>
+        
+        <!-- Stil za kartice -->
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="#F9F9F9"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        
+        <!-- Stil za ListBox item-e -->
+        <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        
+        <!-- Stil za TextBox -->
+        <Style Selector="TextBox">
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+        
     </Application.Styles>
 </Application>
