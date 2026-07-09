@@ -1,11 +1,16 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:FitnessApp.ViewModels"
+        xmlns:converters="clr-namespace:FitnessApp.Converters"
         x:Class="FitnessApp.Views.AdminMainWindow"
         x:DataType="vm:AdminMainViewModel"
         Title="Admin Panel"
         Width="800" Height="600"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <converters:RatingToStarsConverter x:Key="RatingToStarsConverter"/>
+    </Window.Resources>
 
     <DockPanel Margin="24">
 
@@ -105,9 +110,15 @@
                                 <TextBlock Text="{Binding Email}"
                                            Foreground="Gray"
                                            FontSize="11"/>
-                                <TextBlock Text="{Binding Rating,
-                                           StringFormat='Rating: {0:F1}'}"
-                                           FontSize="11"/>
+                                <!-- ZVEZDICE - ispravljeno -->
+                                <StackPanel Orientation="Horizontal" Spacing="2">
+                                    <TextBlock Text="{Binding Rating, Converter={StaticResource RatingToStarsConverter}}"
+                                               FontSize="14"
+                                               Foreground="#F39C12"/>
+                                    <TextBlock Text="{Binding Rating, StringFormat='({0:F1})'}"
+                                               FontSize="11"
+                                               Foreground="#888888"/>
+                                </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
