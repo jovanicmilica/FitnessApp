@@ -62,7 +62,7 @@
                 Padding="32,10"
                 FontSize="14"
                 FontWeight="SemiBold"
-                Background="#3498DB"
+                Background="#5BA3D0"
                 Foreground="White"
                 Cursor="Hand"/>
 
@@ -82,14 +82,14 @@
                     Command="{Binding OpenRegisterClientCommand}"
                     Padding="28,8"
                     FontSize="13"
-                    Background="#2ECC71"
+                    Background="#4EBF7E"
                     Foreground="White"
                     Cursor="Hand"/>
             <Button Content="Register as Trainer"
                     Command="{Binding OpenRegisterTrainerCommand}"
                     Padding="28,8"
                     FontSize="13"
-                    Background="#9B59B6"
+                    Background="#A966D3"
                     Foreground="White"
                     Cursor="Hand"/>
         </StackPanel>

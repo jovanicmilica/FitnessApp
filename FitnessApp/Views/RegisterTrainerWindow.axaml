@@ -167,7 +167,7 @@
                         Padding="40,10"
                         FontSize="14"
                         FontWeight="SemiBold"
-                        Background="#9B59B6"
+                        Background="#A966D3"
                         Foreground="White"
                         Cursor="Hand"/>
 
@@ -175,7 +175,7 @@
                         Command="{Binding BackToLoginCommand}"
                         Padding="32,8"
                         FontSize="13"
-                        Background="#95A5A6"
+                        Background="#8B8BA3"
                         Foreground="White"
                         Cursor="Hand"/>
             </StackPanel>

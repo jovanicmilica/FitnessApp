@@ -1,0 +1,131 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FitnessApp.ViewModels"
+        x:Class="FitnessApp.Views.AdminMainWindow"
+        x:DataType="vm:AdminMainViewModel"
+        Title="Admin Panel"
+        Width="800" Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel Margin="24">
+
+        <!-- Header -->
+        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 16">
+            <TextBlock Text="Admin Panel"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+            <Button Content="Logout"
+                    Command="{Binding LogoutCommand}"
+                    HorizontalAlignment="Right"
+                    Padding="20,8"
+                    Background="#4EBF7E"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+        </DockPanel>
+
+        <!-- Status poruka -->
+        <TextBlock DockPanel.Dock="Top"
+                   Text="{Binding StatusMessage}"
+                   Foreground="Green"
+                   Margin="0 0 0 12"
+                   IsVisible="{Binding StatusMessage,
+                               Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+        <!-- Glavni sadržaj -->
+        <Grid ColumnDefinitions="*,*">
+
+            <!-- Lijeva kolona: Pending treneri -->
+            <StackPanel Grid.Column="0" Margin="0 0 12 0">
+
+                <TextBlock Text="Pending Trainer Applications"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="0 0 0 8"/>
+
+                <ListBox ItemsSource="{Binding PendingTrainers}"
+                         SelectedItem="{Binding SelectedPendingTrainer}"
+                         Height="350">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Spacing="4" Margin="4">
+                                <TextBlock Text="{Binding FirstName}"
+                                           FontWeight="Bold"/>
+                                <TextBlock Text="{Binding LastName}"/>
+                                <TextBlock Text="{Binding Email}"
+                                           Foreground="Gray"
+                                           FontSize="11"/>
+                                <TextBlock Text="{Binding PricePerMonth,
+                                           StringFormat='Price: ${0}/month'}"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8"
+                            Margin="0 8 0 0">
+                    <Button Content="Approve"
+                            Command="{Binding ApproveTrainerCommand}"
+                            Background="#4EBF7E"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            Padding="20,8"
+                            Cursor="Hand"/>
+                    <Button Content="Reject"
+                            Command="{Binding RejectTrainerCommand}"
+                            Background="#FF7070"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            Padding="20,8"
+                            Cursor="Hand"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Desna kolona: Aktivni treneri -->
+            <StackPanel Grid.Column="1" Margin="12 0 0 0">
+
+                <TextBlock Text="Active Trainers"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="0 0 0 8"/>
+
+                <ListBox ItemsSource="{Binding ActiveTrainers}"
+                         SelectedItem="{Binding SelectedActiveTrainer}"
+                         Height="350">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Spacing="4" Margin="4">
+                                <TextBlock Text="{Binding FirstName}"
+                                           FontWeight="Bold"/>
+                                <TextBlock Text="{Binding LastName}"/>
+                                <TextBlock Text="{Binding Email}"
+                                           Foreground="Gray"
+                                           FontSize="11"/>
+                                <TextBlock Text="{Binding Rating,
+                                           StringFormat='Rating: {0:F1}'}"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Remove Trainer"
+                        Command="{Binding RemoveTrainerCommand}"
+                        Background="#FFA04D"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        Padding="20,8"
+                        Margin="0 8 0 0"
+                        Cursor="Hand"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </DockPanel>
+
+</Window>

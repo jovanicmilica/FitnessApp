@@ -69,6 +69,7 @@ public partial class LoginViewModel : ObservableObject
             CloseRequested?.Invoke();
             return;
         }
+        */
 
         // Provjeri Administrator
         Administrator admin = adminRepository.GetByEmail(Email);
@@ -80,8 +81,6 @@ public partial class LoginViewModel : ObservableObject
             CloseRequested?.Invoke();
             return;
         }
-        
-         */
 
         // Ako nista nije pronadjeno
         ErrorMessage = "Invalid email or password.";
