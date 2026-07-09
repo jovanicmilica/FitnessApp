@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FitnessApp.Models;
@@ -40,12 +41,29 @@ public partial class AdminMainViewModel : ObservableObject
         PendingTrainers.Clear();
         ActiveTrainers.Clear();
 
-        foreach (var trainer in trainerRepository.GetAll())
+        var allTrainers = trainerRepository.GetAll();
+        
+        // Pending treneri
+        var pending = allTrainers
+            .Where(t => t.Status == TrainerStatus.PENDING || t.Status == TrainerStatus.REJECTED)
+            .OrderBy(t => t.FirstName)
+            .ToList();
+        
+        // Aktivni treneri - SORTIRANI PO OCENI (od najbolje ka najlošijoj)
+        var active = allTrainers
+            .Where(t => t.Status == TrainerStatus.ACTIVE)
+            .OrderByDescending(t => t.Rating)  // ⭐ Najveća ocena prva
+            .ThenBy(t => t.FirstName)          // Ako ista ocena, po imenu
+            .ToList();
+
+        foreach (var trainer in pending)
         {
-            if (trainer.Status == TrainerStatus.PENDING)
-                PendingTrainers.Add(trainer);
-            else if (trainer.Status == TrainerStatus.ACTIVE)
-                ActiveTrainers.Add(trainer);
+            PendingTrainers.Add(trainer);
+        }
+
+        foreach (var trainer in active)
+        {
+            ActiveTrainers.Add(trainer);
         }
     }
 
@@ -63,6 +81,7 @@ public partial class AdminMainViewModel : ObservableObject
 
         StatusMessage = $"{SelectedPendingTrainer.FirstName} {SelectedPendingTrainer.LastName} has been approved.";
         LoadTrainers();
+        SelectedPendingTrainer = null;  // Resetuj selekciju
     }
 
     [RelayCommand]
@@ -79,6 +98,7 @@ public partial class AdminMainViewModel : ObservableObject
 
         StatusMessage = $"{SelectedPendingTrainer.FirstName} {SelectedPendingTrainer.LastName} has been rejected.";
         LoadTrainers();
+        SelectedPendingTrainer = null;  // Resetuj selekciju
     }
 
     [RelayCommand]
@@ -95,6 +115,7 @@ public partial class AdminMainViewModel : ObservableObject
 
         StatusMessage = $"{SelectedActiveTrainer.FirstName} {SelectedActiveTrainer.LastName} has been removed.";
         LoadTrainers();
+        SelectedActiveTrainer = null;  // Resetuj selekciju
     }
 
     [RelayCommand]
