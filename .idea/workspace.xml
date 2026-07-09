@@ -10,7 +10,26 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="" />
+    <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FitnessApp/data/admin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/data/healthRecords.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/ref/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/ref/FitnessApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/refint/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/refint/FitnessApp.dll" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,19 +41,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "jovanicmilica"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jovanicmilica&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/jovanicmilica/FitnessApp.git",
-    "accountId": "d28fb42f-4689-4049-b7b1-0cec2edf8120"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jovanicmilica/FitnessApp.git&quot;,
+    &quot;accountId&quot;: &quot;d28fb42f-4689-4049-b7b1-0cec2edf8120&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Helpers/SeedDataHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Administrator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Client.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Exercise.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,6 +69,7 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Workout.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
@@ -58,67 +79,67 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.001694947062783" />
-      <entry key="MS500" value="1.4904409222863744" />
-      <entry key="S2" value="3.7385728550267165" />
-      <entry key="S5" value="5.623644796573644" />
-      <entry key="S10" value="6.6486518821300225" />
-      <entry key="S30" value="7.90964236982167" />
-      <entry key="S60" value="11.307442598190814" />
-      <entry key="M2" value="20.313397365174318" />
-      <entry key="M5" value="41.25771361075797" />
-      <entry key="M10" value="77.8098231110861" />
-      <entry key="M15" value="114.10522957139432" />
-      <entry key="M30" value="189.53635368359215" />
-      <entry key="H1" value="256.27058791012985" />
-      <entry key="H2" value="301.39289717526884" />
-      <entry key="H4" value="327.73511754727645" />
-      <entry key="D1" value="351.9052826779915" />
-      <entry key="W1" value="356.26666608854896" />
+      <entry key="MS100" value="1.0000000000114173" />
+      <entry key="MS500" value="1.0064790589518695" />
+      <entry key="S2" value="1.2843759692668113" />
+      <entry key="S5" value="1.6625962819551718" />
+      <entry key="S10" value="2.566408355334036" />
+      <entry key="S30" value="16.25013351414676" />
+      <entry key="S60" value="33.6042870616437" />
+      <entry key="M2" value="52.04384542497773" />
+      <entry key="M5" value="98.3108362369153" />
+      <entry key="M10" value="168.88420814079367" />
+      <entry key="M15" value="223.71083282621953" />
+      <entry key="M30" value="340.98027029141406" />
+      <entry key="H1" value="468.54539480451615" />
+      <entry key="H2" value="572.0341154447336" />
+      <entry key="H4" value="639.5528437166952" />
+      <entry key="D1" value="706.3242690847435" />
+      <entry key="W1" value="718.8745482836831" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.901508047096795E-83" />
-      <entry key="S2" value="2.499240941903939E-21" />
-      <entry key="S5" value="5.7427941684087766E-9" />
-      <entry key="S10" value="7.578122569877567E-5" />
-      <entry key="S30" value="0.04231755251089646" />
-      <entry key="S60" value="0.2057123052004826" />
-      <entry key="M2" value="0.45355518429457137" />
-      <entry key="M5" value="0.7288733212843924" />
-      <entry key="M10" value="0.8537407810831062" />
-      <entry key="M15" value="0.8999478658214024" />
-      <entry key="M30" value="0.9486558205278682" />
-      <entry key="H1" value="0.9739896408729757" />
-      <entry key="H2" value="0.986909135064103" />
-      <entry key="H4" value="0.9934330048191988" />
-      <entry key="D1" value="0.9989024939070733" />
-      <entry key="W1" value="0.9998431396190538" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.3531933104705923E-165" />
+      <entry key="S10" value="5.7906763944038734E-83" />
+      <entry key="S30" value="3.8688013599884558E-28" />
+      <entry key="S60" value="1.9669268822171585E-14" />
+      <entry key="M2" value="1.4024717046048248E-7" />
+      <entry key="M5" value="0.0018145028019972873" />
+      <entry key="M10" value="0.04259698113713331" />
+      <entry key="M15" value="0.12196986629225756" />
+      <entry key="M30" value="0.3492418449903415" />
+      <entry key="H1" value="0.5909668730058744" />
+      <entry key="H2" value="0.7687436978641726" />
+      <entry key="H4" value="0.8767803019366709" />
+      <entry key="D1" value="0.9783219494200718" />
+      <entry key="W1" value="0.9968739717353043" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.928168941767884" />
-      <entry key="MS500" value="1.4680069873633705" />
-      <entry key="S2" value="3.7245269590906944" />
-      <entry key="S5" value="5.615233774781352" />
-      <entry key="S10" value="6.643755792184086" />
-      <entry key="S30" value="7.94820013220964" />
-      <entry key="S60" value="11.507193959578297" />
-      <entry key="M2" value="20.760473929935884" />
-      <entry key="M5" value="41.982083268996504" />
-      <entry key="M10" value="78.66044369178891" />
-      <entry key="M15" value="115.00260233239806" />
-      <entry key="M30" value="190.48320809967598" />
-      <entry key="H1" value="257.2434444916237" />
-      <entry key="H2" value="302.3791599389154" />
-      <entry key="H4" value="328.72820384799167" />
-      <entry key="D1" value="352.9041237702565" />
-      <entry key="W1" value="357.26650036295734" />
+      <entry key="MS100" value="0.8585654364471569" />
+      <entry key="MS500" value="0.9761942950279296" />
+      <entry key="S2" value="1.2740340888261914" />
+      <entry key="S5" value="1.6569960685055434" />
+      <entry key="S10" value="2.5625304318465365" />
+      <entry key="S30" value="16.24535283521799" />
+      <entry key="S60" value="33.59952044747014" />
+      <entry key="M2" value="52.03880309599283" />
+      <entry key="M5" value="98.30621213487821" />
+      <entry key="M10" value="168.92070953081767" />
+      <entry key="M15" value="223.82744861345134" />
+      <entry key="M30" value="341.32563826752425" />
+      <entry key="H1" value="469.1338456217954" />
+      <entry key="H2" value="572.8013785081824" />
+      <entry key="H4" value="640.4288127581383" />
+      <entry key="D1" value="707.3024442800115" />
+      <entry key="W1" value="719.871400982487" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3GGFV3DGXJpDbrtSdkiMIcjuezd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -129,13 +150,14 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/repositories",
+    "git-widget-placeholder": "feature/json-files",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -152,7 +174,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1783590020741</updated>
-      <workItem from="1783590023686" duration="4733000" />
+      <workItem from="1783590023686" duration="7269000" />
     </task>
     <task id="LOCAL-00001" summary="add models and enums">
       <option name="closed" value="true" />
