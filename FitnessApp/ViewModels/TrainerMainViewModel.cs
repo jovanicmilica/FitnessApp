@@ -126,6 +126,9 @@ public partial class TrainerMainViewModel : ObservableObject
 
     [ObservableProperty]
     private decimal exerciseDuration;
+    
+    [ObservableProperty]
+    private TrainerProfileViewModel? _profileViewModel;
 
     public TrainerMainViewModel(Trainer trainer)
     {
@@ -148,6 +151,8 @@ public partial class TrainerMainViewModel : ObservableObject
         UpdateSubscriptionStatus();
         LoadEquipment();
         LoadProps();
+        
+        ProfileViewModel = new TrainerProfileViewModel(trainer);
     }
 
     private void LoadPendingRequests()
