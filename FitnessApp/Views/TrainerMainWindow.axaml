@@ -373,6 +373,321 @@
                 </StackPanel>
             </TabItem>
 
+            <!-- Tab 5: Equipment -->
+<TabItem Header="Equipment">
+    <Grid ColumnDefinitions="*,*" Margin="16">
+
+        <!-- Lijevo: lista -->
+        <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+            <TextBlock Text="Equipment List"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <ListBox ItemsSource="{Binding EquipmentList}"
+                     SelectedItem="{Binding SelectedEquipment}"
+                     Height="350"
+                     Padding="8">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12" Background="#F9F9F9"
+                                CornerRadius="4" Margin="4">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontWeight="Bold"
+                                           Foreground="#2C3E50"/>
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           Foreground="#555555"/>
+                                <TextBlock Text="{Binding Quantity,
+                                           StringFormat='Quantity: {0}'}"
+                                           FontSize="12"
+                                           Foreground="#999999"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Edit"
+                        Command="{Binding EditEquipmentCommand}"
+                        Padding="20,8"
+                        Background="#5BA3D0"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Delete"
+                        Command="{Binding DeleteEquipmentCommand}"
+                        Padding="20,8"
+                        Background="#FF7070"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Desno: forma -->
+        <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+            <TextBlock Text="Add / Edit Equipment"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <TextBlock Text="Name"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding EquipmentName}"
+                     Watermark="e.g. Dumbbell 10kg"
+                     Padding="12" Height="42"/>
+
+            <TextBlock Text="Description"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding EquipmentDescription}"
+                     Watermark="Describe the equipment..."
+                     Height="80"
+                     AcceptsReturn="True"
+                     Padding="12"/>
+
+            <TextBlock Text="Quantity"
+                       FontWeight="SemiBold"/>
+            <NumericUpDown Value="{Binding EquipmentQuantity}"
+                           Minimum="0"
+                           Increment="1"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Save"
+                        Command="{Binding SaveEquipmentCommand}"
+                        Padding="24,10"
+                        Background="#4EBF7E"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Clear"
+                        Command="{Binding ClearEquipmentFormCommand}"
+                        Padding="24,10"
+                        Background="#999999"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</TabItem>
+
+<!-- Tab 6: Props -->
+<TabItem Header="Props">
+    <Grid ColumnDefinitions="*,*" Margin="16">
+
+        <!-- Lijevo: lista -->
+        <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+            <TextBlock Text="Props List"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <ListBox ItemsSource="{Binding PropList}"
+                     SelectedItem="{Binding SelectedProp}"
+                     Height="350"
+                     Padding="8">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12" Background="#F9F9F9"
+                                CornerRadius="4" Margin="4">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontWeight="Bold"
+                                           Foreground="#2C3E50"/>
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           Foreground="#555555"/>
+                                <TextBlock Text="{Binding Quantity,
+                                           StringFormat='Quantity: {0}'}"
+                                           FontSize="12"
+                                           Foreground="#999999"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Edit"
+                        Command="{Binding EditPropCommand}"
+                        Padding="20,8"
+                        Background="#5BA3D0"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Delete"
+                        Command="{Binding DeletePropCommand}"
+                        Padding="20,8"
+                        Background="#FF7070"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Desno: forma -->
+        <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+            <TextBlock Text="Add / Edit Prop"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <TextBlock Text="Name"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding PropName}"
+                     Watermark="e.g. Jump Rope"
+                     Padding="12" Height="42"/>
+
+            <TextBlock Text="Description"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding PropDescription}"
+                     Watermark="Describe the prop..."
+                     Height="80"
+                     AcceptsReturn="True"
+                     Padding="12"/>
+
+            <TextBlock Text="Quantity"
+                       FontWeight="SemiBold"/>
+            <NumericUpDown Value="{Binding PropQuantity}"
+                           Minimum="0"
+                           Increment="1"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Save"
+                        Command="{Binding SavePropCommand}"
+                        Padding="24,10"
+                        Background="#4EBF7E"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Clear"
+                        Command="{Binding ClearPropFormCommand}"
+                        Padding="24,10"
+                        Background="#999999"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</TabItem>
+
+<!-- Tab 7: Exercises -->
+<TabItem Header="Exercises">
+    <Grid ColumnDefinitions="*,*" Margin="16">
+
+        <!-- Lijevo: lista -->
+        <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+
+            <TextBlock Text="Exercise List"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <ListBox ItemsSource="{Binding AvailableExercises}"
+                     SelectedItem="{Binding SelectedExerciseForCrud}"
+                     Height="350"
+                     Padding="8">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12" Background="#F9F9F9"
+                                CornerRadius="4" Margin="4">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontWeight="Bold"
+                                           Foreground="#2C3E50"/>
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           Foreground="#555555"/>
+                                <TextBlock Text="{Binding Duration,
+                                           StringFormat='Duration: {0}s'}"
+                                           FontSize="12"
+                                           Foreground="#999999"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Edit"
+                        Command="{Binding EditExerciseCommand}"
+                        Padding="20,8"
+                        Background="#5BA3D0"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Delete"
+                        Command="{Binding DeleteExerciseCommand}"
+                        Padding="20,8"
+                        Background="#FF7070"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Desno: forma -->
+        <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+
+            <TextBlock Text="Add / Edit Exercise"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <TextBlock Text="Name"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding ExerciseName}"
+                     Watermark="e.g. Push Up"
+                     Padding="12" Height="42"/>
+
+            <TextBlock Text="Description"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding ExerciseDescription}"
+                     Watermark="Describe the exercise..."
+                     Height="80"
+                     AcceptsReturn="True"
+                     Padding="12"/>
+
+            <TextBlock Text="Video URL (optional)"
+                       FontWeight="SemiBold"/>
+            <TextBox Text="{Binding ExerciseVideoUrl}"
+                     Watermark="e.g. https://youtube.com/..."
+                     Padding="12" Height="42"/>
+
+            <TextBlock Text="Duration (seconds)"
+                       FontWeight="SemiBold"/>
+            <NumericUpDown Value="{Binding ExerciseDuration}"
+                           Minimum="0"
+                           Increment="10"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Save"
+                        Command="{Binding SaveExerciseCommand}"
+                        Padding="24,10"
+                        Background="#4EBF7E"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                <Button Content="Clear"
+                        Command="{Binding ClearExerciseFormCommand}"
+                        Padding="24,10"
+                        Background="#999999"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</TabItem>
+
         </TabControl>
 
     </DockPanel>

@@ -70,6 +70,62 @@ public partial class TrainerMainViewModel : ObservableObject
 
     [ObservableProperty]
     private string errorMessage = string.Empty;
+    
+    // Equipment
+    private readonly EquipmentRepository equipmentRepository;
+    private int? editingEquipmentId = null;
+
+    [ObservableProperty]
+    private ObservableCollection<Equipment> equipmentList = new();
+
+    [ObservableProperty]
+    private Equipment? selectedEquipment;
+
+    [ObservableProperty]
+    private string equipmentName = string.Empty;
+
+    [ObservableProperty]
+    private string equipmentDescription = string.Empty;
+
+    [ObservableProperty]
+    private decimal equipmentQuantity;
+
+// Props
+    private readonly PropRepository propRepository;
+    private int? editingPropId = null;
+
+    [ObservableProperty]
+    private ObservableCollection<Prop> propList = new();
+
+    [ObservableProperty]
+    private Prop? selectedProp;
+
+    [ObservableProperty]
+    private string propName = string.Empty;
+
+    [ObservableProperty]
+    private string propDescription = string.Empty;
+
+    [ObservableProperty]
+    private decimal propQuantity;
+
+// Exercise CRUD
+    private int? editingExerciseId = null;
+
+    [ObservableProperty]
+    private Exercise? selectedExerciseForCrud;
+
+    [ObservableProperty]
+    private string exerciseName = string.Empty;
+
+    [ObservableProperty]
+    private string exerciseDescription = string.Empty;
+
+    [ObservableProperty]
+    private string exerciseVideoUrl = string.Empty;
+
+    [ObservableProperty]
+    private decimal exerciseDuration;
 
     public TrainerMainViewModel(Trainer trainer)
     {
@@ -82,12 +138,16 @@ public partial class TrainerMainViewModel : ObservableObject
         paymentRepository = new PaymentRepository();
         clientRepository = new ClientRepository();
         feedbackRepository = new FeedbackRepository();
+        equipmentRepository = new EquipmentRepository();
+        propRepository = new PropRepository();
 
         LoadPendingRequests();
         LoadActiveTutelages();
         LoadExercises();
         LoadFeedbacks();
         UpdateSubscriptionStatus();
+        LoadEquipment();
+        LoadProps();
     }
 
     private void LoadPendingRequests()
@@ -128,6 +188,20 @@ public partial class TrainerMainViewModel : ObservableObject
                 feedback.TargetId == currentTrainer.Id)
                 MyFeedbacks.Add(feedback);
         }
+    }
+    
+    private void LoadEquipment()
+    {
+        EquipmentList.Clear();
+        foreach (var e in equipmentRepository.GetAll())
+            EquipmentList.Add(e);
+    }
+
+    private void LoadProps()
+    {
+        PropList.Clear();
+        foreach (var p in propRepository.GetAll())
+            PropList.Add(p);
     }
 
     private void UpdateSubscriptionStatus()
@@ -292,6 +366,230 @@ public partial class TrainerMainViewModel : ObservableObject
         SelectedExercises.Clear();
         SelectedActiveTutelage = null;
     }
+    
+    [RelayCommand]
+    private void EditEquipment()
+    {
+        if (SelectedEquipment == null) return;
+        editingEquipmentId = SelectedEquipment.Id;
+        EquipmentName = SelectedEquipment.Name;
+        EquipmentDescription = SelectedEquipment.Description;
+        EquipmentQuantity = SelectedEquipment.Quantity;
+    }
+
+    [RelayCommand]
+    private void DeleteEquipment()
+    {
+        if (SelectedEquipment == null)
+        {
+            ErrorMessage = "Please select equipment to delete.";
+            return;
+        }
+        equipmentRepository.Delete(SelectedEquipment.Id);
+        LoadEquipment();
+        ClearEquipmentForm();
+        StatusMessage = "Equipment deleted.";
+    }
+
+    [RelayCommand]
+    private void SaveEquipment()
+    {
+        if (string.IsNullOrEmpty(EquipmentName))
+        {
+            ErrorMessage = "Please enter equipment name.";
+            return;
+        }
+
+        if (editingEquipmentId.HasValue)
+        {
+            // Update
+            Equipment existing = equipmentRepository.GetById(editingEquipmentId.Value);
+            if (existing != null)
+            {
+                existing.Name = EquipmentName;
+                existing.Description = EquipmentDescription;
+                existing.Quantity = (int)EquipmentQuantity;
+                equipmentRepository.Update(existing);
+                StatusMessage = "Equipment updated.";
+            }
+            editingEquipmentId = null;
+        }
+        else
+        {
+            // Add
+            Equipment newEquipment = new Equipment
+            {
+                Name = EquipmentName,
+                Description = EquipmentDescription,
+                Quantity = (int)EquipmentQuantity
+            };
+            equipmentRepository.Add(newEquipment);
+            StatusMessage = "Equipment added.";
+        }
+
+        LoadEquipment();
+        ClearEquipmentForm();
+        ErrorMessage = string.Empty;
+    }
+
+    [RelayCommand]
+    private void ClearEquipmentForm()
+    {
+        editingEquipmentId = null;
+        EquipmentName = string.Empty;
+        EquipmentDescription = string.Empty;
+        EquipmentQuantity = 0;
+        SelectedEquipment = null;
+    }
+    
+    [RelayCommand]
+    private void EditProp()
+    {
+        if (SelectedProp == null) return;
+        editingPropId = SelectedProp.Id;
+        PropName = SelectedProp.Name;
+        PropDescription = SelectedProp.Description;
+        PropQuantity = SelectedProp.Quantity;
+    }
+
+    [RelayCommand]
+    private void DeleteProp()
+    {
+        if (SelectedProp == null)
+        {
+            ErrorMessage = "Please select a prop to delete.";
+            return;
+        }
+        propRepository.Delete(SelectedProp.Id);
+        LoadProps();
+        ClearPropForm();
+        StatusMessage = "Prop deleted.";
+    }
+
+    [RelayCommand]
+    private void SaveProp()
+    {
+        if (string.IsNullOrEmpty(PropName))
+        {
+            ErrorMessage = "Please enter prop name.";
+            return;
+        }
+
+        if (editingPropId.HasValue)
+        {
+            Prop existing = propRepository.GetById(editingPropId.Value);
+            if (existing != null)
+            {
+                existing.Name = PropName;
+                existing.Description = PropDescription;
+                existing.Quantity = (int)PropQuantity;
+                propRepository.Update(existing);
+                StatusMessage = "Prop updated.";
+            }
+            editingPropId = null;
+        }
+        else
+        {
+            Prop newProp = new Prop
+            {
+                Name = PropName,
+                Description = PropDescription,
+                Quantity = (int)PropQuantity
+            };
+            propRepository.Add(newProp);
+            StatusMessage = "Prop added.";
+        }
+
+        LoadProps();
+        ClearPropForm();
+        ErrorMessage = string.Empty;
+    }
+
+    [RelayCommand]
+    private void ClearPropForm()
+    {
+        editingPropId = null;
+        PropName = string.Empty;
+        PropDescription = string.Empty;
+        PropQuantity = 0;
+        SelectedProp = null;
+    }
+    
+    [RelayCommand]
+private void EditExercise()
+{
+    if (SelectedExerciseForCrud == null) return;
+    editingExerciseId = SelectedExerciseForCrud.Id;
+    ExerciseName = SelectedExerciseForCrud.Name;
+    ExerciseDescription = SelectedExerciseForCrud.Description;
+    ExerciseVideoUrl = SelectedExerciseForCrud.VideoUrl;
+    ExerciseDuration = SelectedExerciseForCrud.Duration;
+}
+
+[RelayCommand]
+private void DeleteExercise()
+{
+    if (SelectedExerciseForCrud == null)
+    {
+        ErrorMessage = "Please select an exercise to delete.";
+        return;
+    }
+    exerciseRepository.Delete(SelectedExerciseForCrud.Id);
+    LoadExercises();
+    ClearExerciseForm();
+    StatusMessage = "Exercise deleted.";
+}
+
+[RelayCommand]
+private void SaveExercise()
+{
+    if (string.IsNullOrEmpty(ExerciseName))
+    {
+        ErrorMessage = "Please enter exercise name.";
+        return;
+    }
+
+    if (editingExerciseId.HasValue)
+    {
+        Exercise? existing = exerciseRepository.GetById(editingExerciseId.Value);
+        if (existing != null)
+        {
+            existing.Name = ExerciseName;
+            existing.Description = ExerciseDescription;
+            existing.VideoUrl = ExerciseVideoUrl;
+            existing.Duration = (int)ExerciseDuration;
+            exerciseRepository.Update(existing);
+            StatusMessage = "Exercise updated.";
+        }
+        editingExerciseId = null;
+    }
+    else
+    {
+        Exercise newExercise = new Exercise(
+            ExerciseName,
+            ExerciseDescription,
+            ExerciseVideoUrl,
+            (int)ExerciseDuration
+        );
+        exerciseRepository.Add(newExercise);
+        StatusMessage = "Exercise added.";
+    }
+
+    LoadExercises();
+    ClearExerciseForm();
+    ErrorMessage = string.Empty;
+}
+
+[RelayCommand]
+private void ClearExerciseForm()
+{
+    editingExerciseId = null;
+    ExerciseName = string.Empty;
+    ExerciseDescription = string.Empty;
+    ExerciseVideoUrl = string.Empty;
+    ExerciseDuration = 0;
+    SelectedExerciseForCrud = null;
+}
 
     [RelayCommand]
     private void PaySubscription()
@@ -319,8 +617,9 @@ public partial class TrainerMainViewModel : ObservableObject
     [RelayCommand]
     private void Logout()
     {
-        CloseRequested?.Invoke();
+        LogoutRequested?.Invoke();
     }
 
+    public event Action? LogoutRequested;
     public event Action? CloseRequested;
 }
