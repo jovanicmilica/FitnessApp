@@ -11,24 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Models/Equipment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Models/Prop.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Repositories/EquipmentRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/Repositories/PropRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/data/equipments.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FitnessApp/data/props.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientProfileViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/exercises.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/exercises.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" afterDir="false" />
@@ -100,6 +88,7 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/WorkoutExerciseRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientProfileViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterClientViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" root0="SKIP_HIGHLIGHTING" />
@@ -112,10 +101,10 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -123,61 +112,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6482942087847814" />
-      <entry key="MS500" value="4.163225869848407" />
-      <entry key="S2" value="8.134632990865608" />
-      <entry key="S5" value="10.141092265770741" />
-      <entry key="S10" value="11.007336075823275" />
-      <entry key="S30" value="11.653837637050522" />
-      <entry key="S60" value="11.824927027464536" />
-      <entry key="M2" value="11.912084759334796" />
-      <entry key="M5" value="12.1525392420198" />
-      <entry key="M10" value="17.0900715811344" />
-      <entry key="M15" value="38.011313178254895" />
-      <entry key="M30" value="190.28960724488522" />
-      <entry key="H1" value="521.5178059942233" />
-      <entry key="H2" value="905.7336208198303" />
-      <entry key="H4" value="1283.5170002850903" />
-      <entry key="D1" value="2035.6028843428326" />
-      <entry key="W1" value="2271.5043346258685" />
+      <entry key="MS100" value="1.0009564653712026" />
+      <entry key="MS500" value="1.2647335134560698" />
+      <entry key="S2" value="2.4530635980773434" />
+      <entry key="S5" value="3.824391365688524" />
+      <entry key="S10" value="4.705983989188555" />
+      <entry key="S30" value="5.510926130086051" />
+      <entry key="S60" value="5.788822614604967" />
+      <entry key="M2" value="6.577984358131483" />
+      <entry key="M5" value="9.873750736194904" />
+      <entry key="M10" value="15.68726394486932" />
+      <entry key="M15" value="32.06387096900663" />
+      <entry key="M30" value="163.61549195955072" />
+      <entry key="H1" value="480.64516590441605" />
+      <entry key="H2" value="870.0748147585872" />
+      <entry key="H4" value="1259.6526534515162" />
+      <entry key="D1" value="2033.6314308583253" />
+      <entry key="W1" value="2276.2314502331456" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="4.726604742170579E-171" />
-      <entry key="S30" value="1.6782233606485715E-57" />
-      <entry key="S60" value="4.0966124552217976E-29" />
-      <entry key="M2" value="6.40052523837221E-15" />
-      <entry key="M5" value="2.119820753232617E-6" />
-      <entry key="M10" value="0.001585726791261412" />
-      <entry key="M15" value="0.015454888507250051" />
-      <entry key="M30" value="0.16461845216542434" />
-      <entry key="H1" value="0.5637108276544509" />
-      <entry key="H2" value="1.0782688214362959" />
-      <entry key="H4" value="1.600045002022899" />
-      <entry key="D1" value="2.6232592885655763" />
-      <entry key="W1" value="2.9403282060278744" />
+      <entry key="S10" value="8.95271741195878E-186" />
+      <entry key="S30" value="2.0764347680436096E-62" />
+      <entry key="S60" value="1.4409839583650503E-31" />
+      <entry key="M2" value="3.79605719171499E-16" />
+      <entry key="M5" value="6.847719979259069E-7" />
+      <entry key="M10" value="9.01263514964514E-4" />
+      <entry key="M15" value="0.010604287509099213" />
+      <entry key="M30" value="0.1363597896863981" />
+      <entry key="H1" value="0.5130506960704928" />
+      <entry key="H2" value="1.0286769293498956" />
+      <entry key="H4" value="1.5628171688633186" />
+      <entry key="D1" value="2.612986797077605" />
+      <entry key="W1" value="2.938680565919858" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3824656910610977" />
-      <entry key="MS500" value="3.9712336215811628" />
-      <entry key="S2" value="7.8472905240711395" />
-      <entry key="S5" value="9.92913515450012" />
-      <entry key="S10" value="10.875512379142476" />
-      <entry key="S30" value="11.602841796621064" />
-      <entry key="S60" value="11.798451518230095" />
-      <entry key="M2" value="11.898594747885824" />
-      <entry key="M5" value="12.147055507940099" />
-      <entry key="M10" value="17.08874037807156" />
-      <entry key="M15" value="38.02450688662532" />
-      <entry key="M30" value="190.45193700154923" />
-      <entry key="H1" value="522.078957249063" />
-      <entry key="H2" value="906.8097116642982" />
-      <entry key="H4" value="1285.1154952888135" />
-      <entry key="D1" value="2038.225732576961" />
-      <entry key="W1" value="2274.444597335998" />
+      <entry key="MS100" value="0.9146875107190698" />
+      <entry key="MS500" value="1.2411189033739276" />
+      <entry key="S2" value="2.4411622645321414" />
+      <entry key="S5" value="3.816900403222276" />
+      <entry key="S10" value="4.701347082594229" />
+      <entry key="S30" value="5.5091059907896085" />
+      <entry key="S60" value="5.787779296963098" />
+      <entry key="M2" value="6.576698547560899" />
+      <entry key="M5" value="9.871782388264803" />
+      <entry key="M10" value="15.686408438179152" />
+      <entry key="M15" value="32.072857724851694" />
+      <entry key="M30" value="163.74992286753817" />
+      <entry key="H1" value="481.1558705078679" />
+      <entry key="H2" value="871.1014056046482" />
+      <entry key="H4" value="1261.213952546639" />
+      <entry key="D1" value="2036.2440075207091" />
+      <entry key="W1" value="2279.1700652413065" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -204,7 +193,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/equipment-props-exercise-crud",
+    "git-widget-placeholder": "feature/profile-update",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -222,7 +211,7 @@
       <option name="presentableId" value="Default" />
       <updated>1783590020741</updated>
       <workItem from="1783590023686" duration="13518000" />
-      <workItem from="1783672936194" duration="2415000" />
+      <workItem from="1783672936194" duration="3744000" />
     </task>
     <task id="LOCAL-00001" summary="add models and enums">
       <option name="closed" value="true" />
@@ -312,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783634704080</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="implement equipment, props and exercise CRUD for trainers&#10;&#10;- Add Equipment and Prop models with id, name, description, quantity fields&#10;- Add EquipmentRepository and PropRepository with full CRUD and JSON persistence&#10;- Add Equipment, Props and Exercises tabs to TrainerMainWindow&#10;- Implement add, edit, delete and clear form logic in TrainerMainViewModel&#10;- Fix logout navigation across all windows (separate LogoutRequested from CloseRequested)&#10;- Fix login routing to use parameterized constructors for proper event binding">
+      <option name="closed" value="true" />
+      <created>1783675505216</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1783675505216</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +330,8 @@
     <MESSAGE value="Add converters and trainer dashboard&#10;&#10;- Add BoolToTextConverter, BoolToColorConverter, InvertedBoolConverter&#10;- Add ObjectConverters and StringConverters for null/empty checks&#10;- Implement trainer dashboard with tabs for:&#10;  - Tutelage requests management&#10;  - Workout creation&#10;  - Feedback overview&#10;  - Subscription status&#10;- Update App.axaml with global styles and converter resources" />
     <MESSAGE value="sort active trainers by rating in admin panel" />
     <MESSAGE value="display trainer ratings with stars in admin UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="display trainer ratings with stars in admin UI" />
+    <MESSAGE value="implement equipment, props and exercise CRUD for trainers&#10;&#10;- Add Equipment and Prop models with id, name, description, quantity fields&#10;- Add EquipmentRepository and PropRepository with full CRUD and JSON persistence&#10;- Add Equipment, Props and Exercises tabs to TrainerMainWindow&#10;- Implement add, edit, delete and clear form logic in TrainerMainViewModel&#10;- Fix logout navigation across all windows (separate LogoutRequested from CloseRequested)&#10;- Fix login routing to use parameterized constructors for proper event binding" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement equipment, props and exercise CRUD for trainers&#10;&#10;- Add Equipment and Prop models with id, name, description, quantity fields&#10;- Add EquipmentRepository and PropRepository with full CRUD and JSON persistence&#10;- Add Equipment, Props and Exercises tabs to TrainerMainWindow&#10;- Implement add, edit, delete and clear form logic in TrainerMainViewModel&#10;- Fix logout navigation across all windows (separate LogoutRequested from CloseRequested)&#10;- Fix login routing to use parameterized constructors for proper event binding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

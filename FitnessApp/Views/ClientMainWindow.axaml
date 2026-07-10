@@ -262,6 +262,134 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Profile">
+        <ContentControl Content="{Binding ProfileViewModel}">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="{x:Type vm:ClientProfileViewModel}">
+                    
+                    <StackPanel Margin="24" Spacing="16">
+                        
+                        <!-- Title -->
+                        <TextBlock Text="Profile Settings"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+                        
+                        <TextBlock Text="Manage your personal information"
+                                   FontSize="13"
+                                   Foreground="#888888"
+                                   Margin="0,-8,0,0"/>
+                        
+                        <Border Height="1" Background="#E0E0E0"/>
+                        
+                        <!-- Loading -->
+                        <Grid IsVisible="{Binding IsLoading}">
+                            <TextBlock Text="Saving..." Foreground="#3498DB" FontWeight="SemiBold"/>
+                        </Grid>
+                        
+                        <!-- Profile Form -->
+                        <Grid IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
+                            <StackPanel Spacing="12">
+                                
+                                <!-- First Name -->
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="First Name" FontWeight="SemiBold" Foreground="#333"/>
+                                    <TextBox Text="{Binding FirstName}"
+                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                             Watermark="Enter first name"
+                                             Padding="12"
+                                             Height="40"/>
+                                </StackPanel>
+                                
+                                <!-- Last Name -->
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Last Name" FontWeight="SemiBold" Foreground="#333"/>
+                                    <TextBox Text="{Binding LastName}"
+                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                             Watermark="Enter last name"
+                                             Padding="12"
+                                             Height="40"/>
+                                </StackPanel>
+                                
+                                <!-- Email -->
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Email" FontWeight="SemiBold" Foreground="#333"/>
+                                    <TextBox Text="{Binding Email}"
+                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                             Watermark="Enter email"
+                                             Padding="12"
+                                             Height="40"/>
+                                </StackPanel>
+                                
+                                <!-- Password -->
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Password" FontWeight="SemiBold" Foreground="#333"/>
+                                    <TextBox Text="{Binding Password}"
+                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                             PasswordChar="*"
+                                             Watermark="Enter password"
+                                             Padding="12"
+                                             Height="40"/>
+                                </StackPanel>
+                                
+                                <!-- Status Message -->
+                                <TextBlock Text="{Binding SaveMessage}"
+                                           Foreground="{Binding IsSaveSuccess, 
+                                               Converter={StaticResource BoolToColorConverter},
+                                               ConverterParameter='#27AE60|#E74C3C'}"
+                                           FontWeight="SemiBold"
+                                           IsVisible="{Binding SaveMessage, 
+                                               Converter={StaticResource StringIsNotNullOrEmpty}}"/>
+                                
+                                <!-- Buttons -->
+                                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                                    
+                                    <!-- Edit Button (visible when not editing) -->
+                                    <Button Content="Edit Profile"
+                                            Command="{Binding ToggleEditCommand}"
+                                            IsVisible="{Binding IsEditing, 
+                                                Converter={StaticResource InvertedBoolConverter}}"
+                                            Background="#3498DB"
+                                            Foreground="White"
+                                            FontWeight="SemiBold"
+                                            Padding="24,10"
+                                            CornerRadius="6"
+                                            Cursor="Hand"/>
+                                    
+                                    <!-- Save Button (visible when editing) -->
+                                    <Button Content="Save Changes"
+                                            Command="{Binding SaveProfileCommand}"
+                                            IsVisible="{Binding IsEditing}"
+                                            Background="#27AE60"
+                                            Foreground="White"
+                                            FontWeight="SemiBold"
+                                            Padding="24,10"
+                                            CornerRadius="6"
+                                            Cursor="Hand"/>
+                                    
+                                    <!-- Cancel Button (visible when editing) -->
+                                    <Button Content="Cancel"
+                                            Command="{Binding ToggleEditCommand}"
+                                            IsVisible="{Binding IsEditing}"
+                                            Background="#95A5A6"
+                                            Foreground="White"
+                                            FontWeight="SemiBold"
+                                            Padding="24,10"
+                                            CornerRadius="6"
+                                            Cursor="Hand"/>
+                                    
+                                </StackPanel>
+                                
+                            </StackPanel>
+                        </Grid>
+                        
+                    </StackPanel>
+                    
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+    </TabItem>
+
         </TabControl>
 
     </DockPanel>

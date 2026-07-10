@@ -65,6 +65,10 @@ public partial class ClientMainViewModel : ObservableObject
 
     [ObservableProperty]
     private string errorMessage = string.Empty;
+    
+    // Profil korisnika
+    [ObservableProperty]
+    private ClientProfileViewModel? _profileViewModel;
 
     public ClientMainViewModel(Client client)
     {
@@ -74,6 +78,7 @@ public partial class ClientMainViewModel : ObservableObject
         questionnaireRepository = new QuestionnaireRepository();
         feedbackRepository = new FeedbackRepository();
         paymentRepository = new PaymentRepository();
+        ProfileViewModel = new ClientProfileViewModel(client);
 
         LoadTrainers();
         LoadMyTutelages();
