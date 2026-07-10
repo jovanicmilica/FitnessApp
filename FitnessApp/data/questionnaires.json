@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "Goals": [
+      "Lose weight"
+    ],
+    "LocationPreference": "Gym",
+    "TimePreference": "Weekends",
+    "HealthIssues": "",
+    "TutelageId": 0
+  }
+]

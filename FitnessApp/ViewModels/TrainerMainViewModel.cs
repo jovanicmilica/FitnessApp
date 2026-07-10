@@ -90,7 +90,7 @@ public partial class TrainerMainViewModel : ObservableObject
     [ObservableProperty]
     private decimal equipmentQuantity;
 
-// Props
+    // Props
     private readonly PropRepository propRepository;
     private int? editingPropId = null;
 
@@ -109,7 +109,7 @@ public partial class TrainerMainViewModel : ObservableObject
     [ObservableProperty]
     private decimal propQuantity;
 
-// Exercise CRUD
+    // Exercise CRUD
     private int? editingExerciseId = null;
 
     [ObservableProperty]
@@ -129,6 +129,19 @@ public partial class TrainerMainViewModel : ObservableObject
     
     [ObservableProperty]
     private TrainerProfileViewModel? _profileViewModel;
+
+    // My Created Workouts
+    [ObservableProperty]
+    private ObservableCollection<Workout> myCreatedWorkouts = new();
+
+    [ObservableProperty]
+    private Workout? selectedCreatedWorkout;
+
+    [ObservableProperty]
+    private ObservableCollection<WorkoutExercise> selectedWorkoutExercises = new();
+
+    [ObservableProperty]
+    private string selectedWorkoutDetails = string.Empty;
 
     public TrainerMainViewModel(Trainer trainer)
     {
@@ -151,6 +164,7 @@ public partial class TrainerMainViewModel : ObservableObject
         UpdateSubscriptionStatus();
         LoadEquipment();
         LoadProps();
+        LoadMyCreatedWorkouts();
         
         ProfileViewModel = new TrainerProfileViewModel(trainer);
     }
@@ -209,6 +223,22 @@ public partial class TrainerMainViewModel : ObservableObject
             PropList.Add(p);
     }
 
+    private void LoadMyCreatedWorkouts()
+    {
+        MyCreatedWorkouts.Clear();
+        
+        var allWorkouts = workoutRepository.GetAll();
+        var trainerWorkouts = allWorkouts
+            .Where(w => w.TrainerId == currentTrainer.Id)
+            .OrderByDescending(w => w.DateCreated)
+            .ToList();
+        
+        foreach (var workout in trainerWorkouts)
+        {
+            MyCreatedWorkouts.Add(workout);
+        }
+    }
+
     private void UpdateSubscriptionStatus()
     {
         var latestPayment = paymentRepository.GetAll()
@@ -224,10 +254,9 @@ public partial class TrainerMainViewModel : ObservableObject
         }
         else
         {
-            // Proveri da li je plaćanje već urađeno danasnje
             if (latestPayment.Date.Date == DateTime.Now.Date)
             {
-                SubscriptionStatus = $"✓ Paid today ({latestPayment.Date:dd/MM/yyyy HH:mm})";
+                SubscriptionStatus = $"Paid today ({latestPayment.Date:dd/MM/yyyy HH:mm})";
                 IsSubscriptionPaid = true;
             }
             else
@@ -239,7 +268,6 @@ public partial class TrainerMainViewModel : ObservableObject
         }
     }
 
-    // Pregled upitnika za odabrani zahtjev
     partial void OnSelectedPendingRequestChanged(Tutelage? value)
     {
         if (value == null)
@@ -338,7 +366,6 @@ public partial class TrainerMainViewModel : ObservableObject
             return;
         }
 
-        // Kreiraj workout
         Workout workout = new Workout
         {
             Name = WorkoutName,
@@ -349,7 +376,6 @@ public partial class TrainerMainViewModel : ObservableObject
         };
         workoutRepository.Add(workout);
 
-        // Dodaj vježbe
         foreach (var exercise in SelectedExercises)
         {
             WorkoutExercise workoutExercise = new WorkoutExercise(
@@ -366,10 +392,51 @@ public partial class TrainerMainViewModel : ObservableObject
 
         StatusMessage = $"Workout '{WorkoutName}' created successfully!";
 
-        // Očisti formu
         WorkoutName = string.Empty;
         SelectedExercises.Clear();
         SelectedActiveTutelage = null;
+        LoadMyCreatedWorkouts();
+    }
+
+    [RelayCommand]
+    private void ViewCreatedWorkoutDetails()
+    {
+        if (SelectedCreatedWorkout == null)
+        {
+            ErrorMessage = "Please select a workout.";
+            return;
+        }
+    
+        SelectedWorkoutExercises.Clear();
+        var exercises = workoutExerciseRepository.GetAll()
+            .Where(we => we.WorkoutId == SelectedCreatedWorkout.Id)
+            .ToList();
+    
+        foreach (var exercise in exercises)
+        {
+            SelectedWorkoutExercises.Add(exercise);
+        }
+    
+        var exerciseNames = string.Join(", ", SelectedWorkoutExercises.Select(e => 
+        {
+            var ex = exerciseRepository.GetById(e.ExerciseId);
+            return ex?.Name ?? "Unknown";
+        }));
+    
+        var tutelage = tutelageRepository.GetById(SelectedCreatedWorkout.TutelageId);
+        string clientName = "Unknown";
+        if (tutelage != null)
+        {
+            var client = clientRepository.GetById(tutelage.ClientId);
+            if (client != null)
+            {
+                clientName = $"{client.FirstName} {client.LastName}";
+            }
+        }
+    
+        var statusText = SelectedCreatedWorkout.Status == WorkoutStatus.COMPLETED ? "Completed" : "Active";
+    
+        SelectedWorkoutDetails = $"Client: {clientName}\nStatus: {statusText}\nCreated: {SelectedCreatedWorkout.DateCreated:dd/MM/yyyy}\nExercises: {exerciseNames}";
     }
     
     [RelayCommand]
@@ -407,7 +474,6 @@ public partial class TrainerMainViewModel : ObservableObject
 
         if (editingEquipmentId.HasValue)
         {
-            // Update
             Equipment existing = equipmentRepository.GetById(editingEquipmentId.Value);
             if (existing != null)
             {
@@ -421,7 +487,6 @@ public partial class TrainerMainViewModel : ObservableObject
         }
         else
         {
-            // Add
             Equipment newEquipment = new Equipment
             {
                 Name = EquipmentName,
@@ -521,80 +586,80 @@ public partial class TrainerMainViewModel : ObservableObject
     }
     
     [RelayCommand]
-private void EditExercise()
-{
-    if (SelectedExerciseForCrud == null) return;
-    editingExerciseId = SelectedExerciseForCrud.Id;
-    ExerciseName = SelectedExerciseForCrud.Name;
-    ExerciseDescription = SelectedExerciseForCrud.Description;
-    ExerciseVideoUrl = SelectedExerciseForCrud.VideoUrl;
-    ExerciseDuration = SelectedExerciseForCrud.Duration;
-}
-
-[RelayCommand]
-private void DeleteExercise()
-{
-    if (SelectedExerciseForCrud == null)
+    private void EditExercise()
     {
-        ErrorMessage = "Please select an exercise to delete.";
-        return;
-    }
-    exerciseRepository.Delete(SelectedExerciseForCrud.Id);
-    LoadExercises();
-    ClearExerciseForm();
-    StatusMessage = "Exercise deleted.";
-}
-
-[RelayCommand]
-private void SaveExercise()
-{
-    if (string.IsNullOrEmpty(ExerciseName))
-    {
-        ErrorMessage = "Please enter exercise name.";
-        return;
+        if (SelectedExerciseForCrud == null) return;
+        editingExerciseId = SelectedExerciseForCrud.Id;
+        ExerciseName = SelectedExerciseForCrud.Name;
+        ExerciseDescription = SelectedExerciseForCrud.Description;
+        ExerciseVideoUrl = SelectedExerciseForCrud.VideoUrl;
+        ExerciseDuration = SelectedExerciseForCrud.Duration;
     }
 
-    if (editingExerciseId.HasValue)
+    [RelayCommand]
+    private void DeleteExercise()
     {
-        Exercise? existing = exerciseRepository.GetById(editingExerciseId.Value);
-        if (existing != null)
+        if (SelectedExerciseForCrud == null)
         {
-            existing.Name = ExerciseName;
-            existing.Description = ExerciseDescription;
-            existing.VideoUrl = ExerciseVideoUrl;
-            existing.Duration = (int)ExerciseDuration;
-            exerciseRepository.Update(existing);
-            StatusMessage = "Exercise updated.";
+            ErrorMessage = "Please select an exercise to delete.";
+            return;
         }
-        editingExerciseId = null;
+        exerciseRepository.Delete(SelectedExerciseForCrud.Id);
+        LoadExercises();
+        ClearExerciseForm();
+        StatusMessage = "Exercise deleted.";
     }
-    else
+
+    [RelayCommand]
+    private void SaveExercise()
     {
-        Exercise newExercise = new Exercise(
-            ExerciseName,
-            ExerciseDescription,
-            ExerciseVideoUrl,
-            (int)ExerciseDuration
-        );
-        exerciseRepository.Add(newExercise);
-        StatusMessage = "Exercise added.";
+        if (string.IsNullOrEmpty(ExerciseName))
+        {
+            ErrorMessage = "Please enter exercise name.";
+            return;
+        }
+
+        if (editingExerciseId.HasValue)
+        {
+            Exercise? existing = exerciseRepository.GetById(editingExerciseId.Value);
+            if (existing != null)
+            {
+                existing.Name = ExerciseName;
+                existing.Description = ExerciseDescription;
+                existing.VideoUrl = ExerciseVideoUrl;
+                existing.Duration = (int)ExerciseDuration;
+                exerciseRepository.Update(existing);
+                StatusMessage = "Exercise updated.";
+            }
+            editingExerciseId = null;
+        }
+        else
+        {
+            Exercise newExercise = new Exercise(
+                ExerciseName,
+                ExerciseDescription,
+                ExerciseVideoUrl,
+                (int)ExerciseDuration
+            );
+            exerciseRepository.Add(newExercise);
+            StatusMessage = "Exercise added.";
+        }
+
+        LoadExercises();
+        ClearExerciseForm();
+        ErrorMessage = string.Empty;
     }
 
-    LoadExercises();
-    ClearExerciseForm();
-    ErrorMessage = string.Empty;
-}
-
-[RelayCommand]
-private void ClearExerciseForm()
-{
-    editingExerciseId = null;
-    ExerciseName = string.Empty;
-    ExerciseDescription = string.Empty;
-    ExerciseVideoUrl = string.Empty;
-    ExerciseDuration = 0;
-    SelectedExerciseForCrud = null;
-}
+    [RelayCommand]
+    private void ClearExerciseForm()
+    {
+        editingExerciseId = null;
+        ExerciseName = string.Empty;
+        ExerciseDescription = string.Empty;
+        ExerciseVideoUrl = string.Empty;
+        ExerciseDuration = 0;
+        SelectedExerciseForCrud = null;
+    }
 
     [RelayCommand]
     private void PaySubscription()
@@ -616,7 +681,7 @@ private void ClearExerciseForm()
 
         paymentRepository.Add(payment);
         UpdateSubscriptionStatus();
-        StatusMessage = "✓ Subscription paid successfully!";
+        StatusMessage = "Subscription paid successfully!";
     }
 
     [RelayCommand]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "Sets": 3,
+    "Repetitions": 10,
+    "DurationInSeconds": 45,
+    "WorkoutId": 1,
+    "ExerciseId": 2
+  },
+  {
+    "Id": 2,
+    "Sets": 3,
+    "Repetitions": 10,
+    "DurationInSeconds": 30,
+    "WorkoutId": 1,
+    "ExerciseId": 1
+  }
+]

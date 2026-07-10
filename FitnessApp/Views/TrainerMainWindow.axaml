@@ -867,6 +867,99 @@
                 </ScrollViewer>
             </TabItem>
 
+                <!-- Tab 9: My Workouts -->
+        <TabItem Header="My Workouts">
+            <Grid ColumnDefinitions="*,*" Margin="16">
+
+                <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
+                    <TextBlock Text="Created Workouts"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#2C3E50"/>
+
+                    <ListBox ItemsSource="{Binding MyCreatedWorkouts}"
+                             SelectedItem="{Binding SelectedCreatedWorkout}"
+                             Height="400"
+                             Padding="8">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
+                                    <StackPanel Spacing="6">
+                                        <TextBlock Text="{Binding Name}"
+                                                   FontWeight="Bold"
+                                                   Foreground="#2C3E50"/>
+                                        <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"
+                                                   FontSize="12"
+                                                   Foreground="#555555"/>
+                                        <TextBlock Text="{Binding DateCreated, StringFormat='Created: {0:dd/MM/yyyy}'}"
+                                                   FontSize="11"
+                                                   Foreground="#888888"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Button Content="View Details"
+                            Command="{Binding ViewCreatedWorkoutDetailsCommand}"
+                            HorizontalAlignment="Stretch"
+                            Padding="20,10"
+                            Background="#5BA3D0"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
+                    <TextBlock Text="Workout Details"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#2C3E50"/>
+
+                    <Border Background="#F9F9F9" 
+                            CornerRadius="4" 
+                            Padding="16"
+                            Height="400">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="{Binding SelectedWorkoutDetails}"
+                                       TextWrapping="Wrap"
+                                       Foreground="#555555"
+                                       FontSize="13"/>
+                            
+                            <TextBlock Text="Exercises:"
+                                       FontWeight="SemiBold"
+                                       Foreground="#333333"
+                                       Margin="0,8,0,0"/>
+                            
+                            <ItemsControl ItemsSource="{Binding SelectedWorkoutExercises}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="White" 
+                                                CornerRadius="4" 
+                                                Padding="8,4" 
+                                                Margin="0,2">
+                                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                                <TextBlock Text="{Binding Sets, StringFormat='Sets: {0}'}"
+                                                           FontSize="12"
+                                                           Foreground="#2C3E50"/>
+                                                <TextBlock Text="{Binding Repetitions, StringFormat='Reps: {0}'}"
+                                                           FontSize="12"
+                                                           Foreground="#555555"/>
+                                                <TextBlock Text="{Binding DurationInSeconds, StringFormat='Duration: {0}s'}"
+                                                           FontSize="12"
+                                                           Foreground="#555555"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+            </Grid>
+        </TabItem>
+
         </TabControl>
 
     </Grid>
