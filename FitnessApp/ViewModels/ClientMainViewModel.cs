@@ -21,6 +21,9 @@ public partial class ClientMainViewModel : ObservableObject
     private readonly QuestionnaireRepository questionnaireRepository;
     private readonly FeedbackRepository feedbackRepository;
     private readonly PaymentRepository paymentRepository;
+    private readonly WorkoutRepository workoutRepository;
+    private readonly WorkoutExerciseRepository workoutExerciseRepository;
+    private readonly ExerciseRepository exerciseRepository;
 
     // Pretraga trenera
     [ObservableProperty]
@@ -70,6 +73,19 @@ public partial class ClientMainViewModel : ObservableObject
     [ObservableProperty]
     private ClientProfileViewModel? _profileViewModel;
 
+    // Workout
+    [ObservableProperty]
+    private ObservableCollection<Workout> myWorkouts = new();
+
+    [ObservableProperty]
+    private Workout? selectedWorkout;
+
+    [ObservableProperty]
+    private ObservableCollection<WorkoutExercise> selectedWorkoutExercises = new();
+
+    [ObservableProperty]
+    private string selectedWorkoutDetails = string.Empty;
+
     public ClientMainViewModel(Client client)
     {
         currentClient = client;
@@ -78,10 +94,14 @@ public partial class ClientMainViewModel : ObservableObject
         questionnaireRepository = new QuestionnaireRepository();
         feedbackRepository = new FeedbackRepository();
         paymentRepository = new PaymentRepository();
+        workoutRepository = new WorkoutRepository();
+        workoutExerciseRepository = new WorkoutExerciseRepository();
+        exerciseRepository = new ExerciseRepository();
         ProfileViewModel = new ClientProfileViewModel(client);
 
         LoadTrainers();
         LoadMyTutelages();
+        LoadMyWorkouts();
     }
 
     private void LoadTrainers()
@@ -104,6 +124,27 @@ public partial class ClientMainViewModel : ObservableObject
         }
     }
 
+    private void LoadMyWorkouts()
+    {
+        MyWorkouts.Clear();
+        
+        var clientTutelages = tutelageRepository.GetAll()
+            .Where(t => t.ClientId == currentClient.Id)
+            .Select(t => t.Id)
+            .ToList();
+        
+        var allWorkouts = workoutRepository.GetAll();
+        var clientWorkouts = allWorkouts
+            .Where(w => clientTutelages.Contains(w.TutelageId))
+            .OrderByDescending(w => w.DateCreated)
+            .ToList();
+        
+        foreach (var workout in clientWorkouts)
+        {
+            MyWorkouts.Add(workout);
+        }
+    }
+
     [RelayCommand]
     private void SearchTrainers()
     {
@@ -115,7 +156,6 @@ public partial class ClientMainViewModel : ObservableObject
             if (trainer.Status != TrainerStatus.ACTIVE)
                 continue;
 
-            // Filtriranje po imenu ako je uneseno
             if (!string.IsNullOrEmpty(SearchCriteria))
             {
                 bool matchesName = trainer.FirstName.Contains(SearchCriteria, StringComparison.OrdinalIgnoreCase) ||
@@ -148,7 +188,6 @@ public partial class ClientMainViewModel : ObservableObject
             return;
         }
 
-        // Provjeri da li već postoji aktivno mentorstvo sa ovim trenerom
         bool alreadyExists = tutelageRepository.GetAll()
             .Any(t => t.ClientId == currentClient.Id &&
                       t.TrainerId == SelectedTrainer.Id &&
@@ -160,7 +199,6 @@ public partial class ClientMainViewModel : ObservableObject
             return;
         }
 
-        // Kreiraj upitnik
         Questionnaire questionnaire = new Questionnaire(
             new List<string> { Goals },
             LocationPreference,
@@ -169,7 +207,6 @@ public partial class ClientMainViewModel : ObservableObject
         );
         questionnaireRepository.Add(questionnaire);
 
-        // Kreiraj tutelage
         Tutelage tutelage = new Tutelage(
             currentClient.Id,
             SelectedTrainer.Id,
@@ -179,7 +216,6 @@ public partial class ClientMainViewModel : ObservableObject
 
         StatusMessage = $"Request sent to {SelectedTrainer.FirstName} {SelectedTrainer.LastName}!";
 
-        // Očisti formu
         Goals = string.Empty;
         LocationPreference = string.Empty;
         TimePreference = string.Empty;
@@ -215,7 +251,6 @@ public partial class ClientMainViewModel : ObservableObject
 
         paymentRepository.Add(payment);
 
-        // Produži mentorstvo za mjesec
         SelectedTutelage.EndDate = DateTime.Now.AddMonths(1);
         tutelageRepository.Update(SelectedTutelage);
 
@@ -257,6 +292,35 @@ public partial class ClientMainViewModel : ObservableObject
         StatusMessage = "Feedback submitted successfully!";
         FeedbackComment = string.Empty;
         FeedbackRating = 5;
+    }
+
+    [RelayCommand]
+    private void ViewWorkoutDetails()
+    {
+        if (SelectedWorkout == null)
+        {
+            ErrorMessage = "Please select a workout.";
+            return;
+        }
+        
+        SelectedWorkoutExercises.Clear();
+        var exercises = workoutExerciseRepository.GetAll()
+            .Where(we => we.WorkoutId == SelectedWorkout.Id)
+            .ToList();
+        
+        foreach (var exercise in exercises)
+        {
+            SelectedWorkoutExercises.Add(exercise);
+        }
+        
+        var exerciseNames = string.Join(", ", SelectedWorkoutExercises.Select(e => 
+        {
+            var ex = exerciseRepository.GetById(e.ExerciseId);
+            return ex?.Name ?? "Unknown";
+        }));
+        
+        var statusText = SelectedWorkout.Status == WorkoutStatus.COMPLETED ? "Completed" : "Active";
+        SelectedWorkoutDetails = $"Status: {statusText}\nCreated: {SelectedWorkout.DateCreated:dd/MM/yyyy}\nExercises: {exerciseNames}";
     }
 
     [RelayCommand]
