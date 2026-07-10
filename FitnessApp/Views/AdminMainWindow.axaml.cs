@@ -16,12 +16,13 @@ public partial class AdminMainWindow : Window
     public AdminMainWindow(Administrator admin) : this()
     {
         var viewModel = new AdminMainViewModel(admin);
-        viewModel.CloseRequested += () =>
+        DataContext = viewModel;
+
+        viewModel.LogoutRequested += () =>
         {
             new LoginWindow().Show();
             this.Close();
         };
-        DataContext = viewModel;
     }
 
     protected override void OnDataContextChanged(EventArgs e)

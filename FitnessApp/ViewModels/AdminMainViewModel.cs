@@ -121,8 +121,9 @@ public partial class AdminMainViewModel : ObservableObject
     [RelayCommand]
     private void Logout()
     {
-        CloseRequested?.Invoke();
+        LogoutRequested?.Invoke();
     }
 
     public event Action? CloseRequested;
+    public event Action? LogoutRequested;
 }

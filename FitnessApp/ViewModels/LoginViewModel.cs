@@ -42,39 +42,33 @@ public partial class LoginViewModel : ObservableObject
             return;
         }
 
-        // Provjeri Client
-        Client client = clientRepository.GetByEmail(Email);
-        if (client != null && client.Password == Password)
+        Client loggedClient = clientRepository.GetByEmail(Email);
+        if (loggedClient != null && loggedClient.Password == Password)
         {
-            var window = new ClientMainWindow();
-            window.DataContext = new ClientMainViewModel(client);
+            var window = new ClientMainWindow(loggedClient);
             window.Show();
             CloseRequested?.Invoke();
             return;
         }
-        
-        // Provjeri Trainer
-        Trainer trainer = trainerRepository.GetByEmail(Email);
-        if (trainer != null && trainer.Password == Password)
+
+        Trainer loggedTrainer = trainerRepository.GetByEmail(Email);
+        if (loggedTrainer != null && loggedTrainer.Password == Password)
         {
-            if (trainer.Status != TrainerStatus.ACTIVE)
+            if (loggedTrainer.Status != TrainerStatus.ACTIVE)
             {
                 ErrorMessage = "Your account is pending approval or has been suspended.";
                 return;
             }
-            var window = new TrainerMainWindow();
-            window.DataContext = new TrainerMainViewModel(trainer);
+            var window = new TrainerMainWindow(loggedTrainer);
             window.Show();
             CloseRequested?.Invoke();
             return;
         }
-        
-        // Provjeri Administrator
-        Administrator admin = adminRepository.GetByEmail(Email);
-        if (admin != null && admin.Password == Password)
+
+        Administrator loggedAdmin = adminRepository.GetByEmail(Email);
+        if (loggedAdmin != null && loggedAdmin.Password == Password)
         {
-            var window = new AdminMainWindow();
-            window.DataContext = new AdminMainViewModel(admin);
+            var window = new AdminMainWindow(loggedAdmin);
             window.Show();
             CloseRequested?.Invoke();
             return;

@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Name": "Jump Rope",
+    "Description": "Standard jump rope for cardio warmup",
+    "Quantity": 10
+  },
+  {
+    "Id": 2,
+    "Name": "Yoga Mat",
+    "Description": "Non-slip mat for floor exercises",
+    "Quantity": 8
+  }
+]

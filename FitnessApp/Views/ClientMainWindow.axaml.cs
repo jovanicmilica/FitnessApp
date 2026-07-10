@@ -16,12 +16,13 @@ public partial class ClientMainWindow : Window
     public ClientMainWindow(Client client) : this()
     {
         var viewModel = new ClientMainViewModel(client);
-        viewModel.CloseRequested += () =>
+        DataContext = viewModel;
+
+        viewModel.LogoutRequested += () =>
         {
             new LoginWindow().Show();
             this.Close();
         };
-        DataContext = viewModel;
     }
 
     protected override void OnDataContextChanged(EventArgs e)
