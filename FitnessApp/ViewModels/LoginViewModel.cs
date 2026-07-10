@@ -28,6 +28,15 @@ public partial class LoginViewModel : ObservableObject
         clientRepository = new ClientRepository();
         trainerRepository = new TrainerRepository();
         adminRepository = new AdminRepository();
+        
+        RefreshData();
+    }
+    
+    private void RefreshData()
+    {
+        clientRepository.Reload();
+        trainerRepository.Reload();
+        adminRepository.Reload();
     }
 
     [RelayCommand]
@@ -41,6 +50,8 @@ public partial class LoginViewModel : ObservableObject
             ErrorMessage = "Please fill in all fields.";
             return;
         }
+        
+        RefreshData();
 
         Client loggedClient = clientRepository.GetByEmail(Email);
         if (loggedClient != null && loggedClient.Password == Password)

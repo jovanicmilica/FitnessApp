@@ -61,6 +61,11 @@ public class TrainerRepository
         }
     }
 
+    public void Reload()
+    {
+        Load(); 
+    }
+
     public void Delete(int id)
     {
         trainers.RemoveAll(t => t.Id == id);

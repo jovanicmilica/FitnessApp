@@ -67,6 +67,11 @@ public class ClientRepository
         Save();
     }
     
+    public void Reload()
+    {
+        Load(); 
+    }
+    
     public Client GetByEmail(string email)
     {
         return clients.FirstOrDefault(c => c.Email == email);

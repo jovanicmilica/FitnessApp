@@ -38,5 +38,13 @@
     "CertificateUrl": "https://certificates.example.com/nutrition-003",
     "DateIssued": "2021-07-07T00:00:00",
     "TrainerId": 1
+  },
+  {
+    "Id": 6,
+    "Name": "Pilates Instructor",
+    "Institution": "Pilates Method Alliance",
+    "CertificateUrl": "https://pilates-certificate.com",
+    "DateIssued": "2024-07-18T00:00:00",
+    "TrainerId": 3
   }
 ]

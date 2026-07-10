@@ -67,6 +67,11 @@ public class AdminRepository
         Save();
     }
     
+    public void Reload()
+    {
+        Load(); 
+    }
+    
     public Administrator GetByEmail(string email)
     {
         return admins.FirstOrDefault(t => t.Email == email);
