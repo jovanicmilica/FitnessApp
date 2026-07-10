@@ -1,6 +1,7 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:FitnessApp.ViewModels"
+        xmlns:converters="clr-namespace:FitnessApp.Converters"
         x:Class="FitnessApp.Views.ClientMainWindow"
         x:DataType="vm:ClientMainViewModel"
         Title="Fitness Mentoring — Client"
@@ -10,10 +11,17 @@
         CanResize="True"
         Background="#F5F5F5">
 
-    <DockPanel Margin="24">
+    <Window.Resources>
+        <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:IsNotNullOrEmptyConverter x:Key="StringIsNotNullOrEmpty"/>
+        <converters:RatingToStarsConverter x:Key="RatingToStarsConverter"/>
+    </Window.Resources>
 
-        <!-- Header -->
-        <DockPanel DockPanel.Dock="Top" Margin="0 0 0 16">
+    <Grid RowDefinitions="Auto,Auto,*" Margin="24">
+
+        <!-- Header - red 0 -->
+        <DockPanel Grid.Row="0" Margin="0 0 0 16">
             <TextBlock Text="Welcome!"
                        FontSize="24"
                        FontWeight="Bold"
@@ -29,28 +37,26 @@
                     Cursor="Hand"/>
         </DockPanel>
 
-        <!-- Status/Error poruke -->
-        <StackPanel DockPanel.Dock="Top" Margin="0 0 0 12">
+        <!-- Status/Error poruke - red 1 -->
+        <StackPanel Grid.Row="1" Margin="0 0 0 12">
             <TextBlock Text="{Binding StatusMessage}"
                        Foreground="#27AE60"
                        FontWeight="SemiBold"
-                       IsVisible="{Binding StatusMessage,
-                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                       IsVisible="{Binding StatusMessage, Converter={StaticResource StringIsNotNullOrEmpty}}"/>
             <TextBlock Text="{Binding ErrorMessage}"
                        Foreground="#E74C3C"
                        FontWeight="SemiBold"
-                       IsVisible="{Binding ErrorMessage,
-                                   Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                       IsVisible="{Binding ErrorMessage, Converter={StaticResource StringIsNotNullOrEmpty}}"/>
         </StackPanel>
 
-        <!-- Glavni sadržaj — TabControl -->
-        <TabControl Background="White">
+        <!-- TabControl - red 2 (zauzima sav preostali prostor) -->
+        <TabControl Grid.Row="2" Background="White">
 
-            <!-- Tab 1: Search Trainers -->
+            <!-- TAB 1: Search Trainers -->
             <TabItem Header="Search Trainers">
                 <Grid ColumnDefinitions="*,*" Margin="16">
 
-                    <!-- Lijevo: lista trenera -->
+                    <!-- Lijeva kolona: lista trenera -->
                     <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
 
                         <TextBlock Text="Find Your Trainer"
@@ -60,7 +66,7 @@
 
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <TextBox Text="{Binding SearchCriteria}"
-                                     Watermark="Search by name..."
+                                     PlaceholderText="Search by name..."
                                      Padding="12"
                                      Height="42"
                                      Width="200"
@@ -86,14 +92,17 @@
                                                 <Run Text="{Binding FirstName}"/>
                                                 <Run Text="{Binding LastName}"/>
                                             </TextBlock>
-                                            <TextBlock Text="{Binding PricePerMonth,
-                                                       StringFormat='💰 ${0:F2}/month'}"
+                                            <TextBlock Text="{Binding PricePerMonth, StringFormat='${0:F2}/month'}"
                                                        FontSize="12"
                                                        Foreground="#555555"/>
-                                            <TextBlock Text="{Binding Rating,
-                                                       StringFormat='⭐ Rating: {0:F1}'}"
-                                                       FontSize="12"
-                                                       Foreground="#555555"/>
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <TextBlock Text="{Binding Rating, Converter={StaticResource RatingToStarsConverter}}"
+                                                           FontSize="14"
+                                                           Foreground="#F39C12"/>
+                                                <TextBlock Text="{Binding Rating, StringFormat='({0:F1})'}"
+                                                           FontSize="11"
+                                                           Foreground="#888888"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
@@ -102,7 +111,7 @@
 
                     </StackPanel>
 
-                    <!-- Desno: forma za zahtjev -->
+                    <!-- Desna kolona: forma za zahtjev -->
                     <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
 
                         <TextBlock Text="Send Request"
@@ -115,7 +124,7 @@
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding Goals}"
-                                 Watermark="e.g. Lose weight, build muscle..."
+                                 PlaceholderText="e.g. Lose weight, build muscle..."
                                  Height="70"
                                  Padding="12"
                                  FontSize="13"
@@ -126,7 +135,7 @@
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding LocationPreference}"
-                                 Watermark="e.g. Gym, Home, Outdoor"
+                                 PlaceholderText="e.g. Gym, Home, Outdoor"
                                  Padding="12"
                                  Height="42"
                                  FontSize="13"/>
@@ -136,7 +145,7 @@
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding TimePreference}"
-                                 Watermark="e.g. Mornings, Weekends"
+                                 PlaceholderText="e.g. Mornings, Weekends"
                                  Padding="12"
                                  Height="42"
                                  FontSize="13"/>
@@ -146,7 +155,7 @@
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding HealthIssues}"
-                                 Watermark="e.g. Bad knee, asthma..."
+                                 PlaceholderText="e.g. Bad knee, asthma..."
                                  Height="70"
                                  Padding="12"
                                  FontSize="13"
@@ -167,11 +176,11 @@
                 </Grid>
             </TabItem>
 
-            <!-- Tab 2: My Tutelages -->
+            <!-- TAB 2: My Tutelages -->
             <TabItem Header="My Tutelages">
                 <Grid ColumnDefinitions="*,*" Margin="16">
 
-                    <!-- Lijevo: lista mentorstva -->
+                    <!-- Lijeva kolona: lista mentorstva -->
                     <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
 
                         <TextBlock Text="My Tutelages"
@@ -187,16 +196,13 @@
                                 <DataTemplate>
                                     <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
                                         <StackPanel Spacing="6">
-                                            <TextBlock Text="{Binding Status,
-                                                       StringFormat='📋 Status: {0}'}"
+                                            <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"
                                                        FontWeight="Bold"
                                                        Foreground="#2C3E50"/>
-                                            <TextBlock Text="{Binding StartDate,
-                                                       StringFormat='📅 Start: {0:dd/MM/yyyy}'}"
+                                            <TextBlock Text="{Binding StartDate, StringFormat='Start: {0:dd/MM/yyyy}'}"
                                                        FontSize="12"
                                                        Foreground="#555555"/>
-                                            <TextBlock Text="{Binding EndDate,
-                                                       StringFormat='⏰ End: {0:dd/MM/yyyy}'}"
+                                            <TextBlock Text="{Binding EndDate, StringFormat='End: {0:dd/MM/yyyy}'}"
                                                        FontSize="12"
                                                        Foreground="#555555"/>
                                         </StackPanel>
@@ -216,7 +222,7 @@
 
                     </StackPanel>
 
-                    <!-- Desno: feedback forma -->
+                    <!-- Desna kolona: feedback forma -->
                     <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
 
                         <TextBlock Text="Leave Feedback"
@@ -241,7 +247,7 @@
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding FeedbackComment}"
-                                 Watermark="Share your experience..."
+                                 PlaceholderText="Share your experience..."
                                  Height="120"
                                  Padding="12"
                                  FontSize="13"
@@ -262,136 +268,239 @@
                 </Grid>
             </TabItem>
 
+            <!-- TAB 3: Profile -->
             <TabItem Header="Profile">
-        <ContentControl Content="{Binding ProfileViewModel}">
-            <ContentControl.DataTemplates>
-                <DataTemplate DataType="{x:Type vm:ClientProfileViewModel}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                              HorizontalScrollBarVisibility="Disabled">
                     
-                    <StackPanel Margin="24" Spacing="16">
-                        
-                        <!-- Title -->
-                        <TextBlock Text="Profile Settings"
-                                   FontSize="20"
-                                   FontWeight="Bold"
-                                   Foreground="#2C3E50"/>
-                        
-                        <TextBlock Text="Manage your personal information"
-                                   FontSize="13"
-                                   Foreground="#888888"
-                                   Margin="0,-8,0,0"/>
-                        
-                        <Border Height="1" Background="#E0E0E0"/>
-                        
-                        <!-- Loading -->
-                        <Grid IsVisible="{Binding IsLoading}">
-                            <TextBlock Text="Saving..." Foreground="#3498DB" FontWeight="SemiBold"/>
-                        </Grid>
-                        
-                        <!-- Profile Form -->
-                        <Grid IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
-                            <StackPanel Spacing="12">
+                    <ContentControl Content="{Binding ProfileViewModel}">
+                        <ContentControl.DataTemplates>
+                            <DataTemplate DataType="{x:Type vm:ClientProfileViewModel}">
                                 
-                                <!-- First Name -->
-                                <StackPanel Spacing="4">
-                                    <TextBlock Text="First Name" FontWeight="SemiBold" Foreground="#333"/>
-                                    <TextBox Text="{Binding FirstName}"
-                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-                                             Watermark="Enter first name"
-                                             Padding="12"
-                                             Height="40"/>
-                                </StackPanel>
-                                
-                                <!-- Last Name -->
-                                <StackPanel Spacing="4">
-                                    <TextBlock Text="Last Name" FontWeight="SemiBold" Foreground="#333"/>
-                                    <TextBox Text="{Binding LastName}"
-                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-                                             Watermark="Enter last name"
-                                             Padding="12"
-                                             Height="40"/>
-                                </StackPanel>
-                                
-                                <!-- Email -->
-                                <StackPanel Spacing="4">
-                                    <TextBlock Text="Email" FontWeight="SemiBold" Foreground="#333"/>
-                                    <TextBox Text="{Binding Email}"
-                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-                                             Watermark="Enter email"
-                                             Padding="12"
-                                             Height="40"/>
-                                </StackPanel>
-                                
-                                <!-- Password -->
-                                <StackPanel Spacing="4">
-                                    <TextBlock Text="Password" FontWeight="SemiBold" Foreground="#333"/>
-                                    <TextBox Text="{Binding Password}"
-                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-                                             PasswordChar="*"
-                                             Watermark="Enter password"
-                                             Padding="12"
-                                             Height="40"/>
-                                </StackPanel>
-                                
-                                <!-- Status Message -->
-                                <TextBlock Text="{Binding SaveMessage}"
-                                           Foreground="{Binding IsSaveSuccess, 
-                                               Converter={StaticResource BoolToColorConverter},
-                                               ConverterParameter='#27AE60|#E74C3C'}"
-                                           FontWeight="SemiBold"
-                                           IsVisible="{Binding SaveMessage, 
-                                               Converter={StaticResource StringIsNotNullOrEmpty}}"/>
-                                
-                                <!-- Buttons -->
-                                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                                <StackPanel Margin="24" Spacing="16">
                                     
-                                    <!-- Edit Button (visible when not editing) -->
-                                    <Button Content="Edit Profile"
-                                            Command="{Binding ToggleEditCommand}"
-                                            IsVisible="{Binding IsEditing, 
-                                                Converter={StaticResource InvertedBoolConverter}}"
-                                            Background="#3498DB"
-                                            Foreground="White"
-                                            FontWeight="SemiBold"
-                                            Padding="24,10"
-                                            CornerRadius="6"
-                                            Cursor="Hand"/>
+                                    <!-- Title -->
+                                    <TextBlock Text="Profile Settings"
+                                               FontSize="20"
+                                               FontWeight="Bold"
+                                               Foreground="#2C3E50"/>
                                     
-                                    <!-- Save Button (visible when editing) -->
-                                    <Button Content="Save Changes"
-                                            Command="{Binding SaveProfileCommand}"
-                                            IsVisible="{Binding IsEditing}"
-                                            Background="#27AE60"
-                                            Foreground="White"
-                                            FontWeight="SemiBold"
-                                            Padding="24,10"
-                                            CornerRadius="6"
-                                            Cursor="Hand"/>
+                                    <TextBlock Text="Manage your personal information"
+                                               FontSize="13"
+                                               Foreground="#888888"
+                                               Margin="0,-8,0,0"/>
                                     
-                                    <!-- Cancel Button (visible when editing) -->
-                                    <Button Content="Cancel"
-                                            Command="{Binding ToggleEditCommand}"
-                                            IsVisible="{Binding IsEditing}"
-                                            Background="#95A5A6"
-                                            Foreground="White"
-                                            FontWeight="SemiBold"
-                                            Padding="24,10"
-                                            CornerRadius="6"
-                                            Cursor="Hand"/>
+                                    <Border Height="1" Background="#E0E0E0"/>
+                                    
+                                    <!-- Loading -->
+                                    <Grid IsVisible="{Binding IsLoading}">
+                                        <TextBlock Text="Saving..." Foreground="#3498DB" FontWeight="SemiBold"/>
+                                    </Grid>
+                                    
+                                    <!-- Profile Form -->
+                                    <Grid IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
+                                        <StackPanel Spacing="12">
+                                            
+                                            <!-- First Name -->
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="First Name" FontWeight="SemiBold" Foreground="#333"/>
+                                                <TextBox Text="{Binding FirstName}"
+                                                         IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                         PlaceholderText="Enter first name"
+                                                         Padding="12"
+                                                         Height="40"/>
+                                            </StackPanel>
+                                            
+                                            <!-- Last Name -->
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="Last Name" FontWeight="SemiBold" Foreground="#333"/>
+                                                <TextBox Text="{Binding LastName}"
+                                                         IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                         PlaceholderText="Enter last name"
+                                                         Padding="12"
+                                                         Height="40"/>
+                                            </StackPanel>
+                                            
+                                            <!-- Email -->
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="Email" FontWeight="SemiBold" Foreground="#333"/>
+                                                <TextBox Text="{Binding Email}"
+                                                         IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                         PlaceholderText="Enter email"
+                                                         Padding="12"
+                                                         Height="40"/>
+                                            </StackPanel>
+                                            
+                                            <!-- Password -->
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="Password" FontWeight="SemiBold" Foreground="#333"/>
+                                                <TextBox Text="{Binding Password}"
+                                                         IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                         PasswordChar="*"
+                                                         PlaceholderText="Enter password"
+                                                         Padding="12"
+                                                         Height="40"/>
+                                            </StackPanel>
+
+                                            <!-- Health Information -->
+                                            <Border Height="1" Background="#E0E0E0" Margin="0,8,0,8"/>
+
+                                            <TextBlock Text="Health Information"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"
+                                                       Foreground="#2C3E50"/>
+
+                                            <!-- Health Conditions -->
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="Health Conditions" FontWeight="SemiBold" Foreground="#333"/>
+                                                
+                                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                    <TextBox Grid.Column="0" 
+                                                             Text="{Binding NewHealthCondition}"
+                                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                             PlaceholderText="Add health condition"
+                                                             Padding="12"
+                                                             Height="40"/>
+                                                    <Button Grid.Column="1" 
+                                                            Content="+"
+                                                            Command="{Binding AddHealthConditionCommand}"
+                                                            IsVisible="{Binding IsEditing}"
+                                                            Padding="12,6"
+                                                            Background="#3498DB"
+                                                            Foreground="White"
+                                                            Cursor="Hand"/>
+                                                </Grid>
+                                                
+                                                <ItemsControl ItemsSource="{Binding HealthConditions}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Background="#F0F0F0" 
+                                                                    CornerRadius="4" 
+                                                                    Padding="8,4" 
+                                                                    Margin="0,2">
+                                                                <DockPanel>
+                                                                    <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                                                                    <Button DockPanel.Dock="Right"
+                                                                            Content="X"
+                                                                            Command="{Binding $parent[ItemsControl].DataContext.RemoveHealthConditionCommand}"
+                                                                            CommandParameter="{Binding}"
+                                                                            IsVisible="{Binding $parent[ItemsControl].DataContext.IsEditing}"
+                                                                            Background="Transparent"
+                                                                            Foreground="#E74C3C"
+                                                                            Cursor="Hand"
+                                                                            Padding="8,0"/>
+                                                                </DockPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+
+                                            <!-- Disabilities -->
+                                            <StackPanel Spacing="4" Margin="0,8,0,0">
+                                                <TextBlock Text="Disabilities" FontWeight="SemiBold" Foreground="#333"/>
+                                                
+                                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                    <TextBox Grid.Column="0" 
+                                                             Text="{Binding NewDisability}"
+                                                             IsReadOnly="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                                                             PlaceholderText="Add disability"
+                                                             Padding="12"
+                                                             Height="40"/>
+                                                    <Button Grid.Column="1" 
+                                                            Content="+"
+                                                            Command="{Binding AddDisabilityCommand}"
+                                                            IsVisible="{Binding IsEditing}"
+                                                            Padding="12,6"
+                                                            Background="#3498DB"
+                                                            Foreground="White"
+                                                            Cursor="Hand"/>
+                                                </Grid>
+                                                
+                                                <ItemsControl ItemsSource="{Binding Disabilities}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Background="#F0F0F0" 
+                                                                    CornerRadius="4" 
+                                                                    Padding="8,4" 
+                                                                    Margin="0,2">
+                                                                <DockPanel>
+                                                                    <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                                                                    <Button DockPanel.Dock="Right"
+                                                                            Content="X"
+                                                                            Command="{Binding $parent[ItemsControl].DataContext.RemoveDisabilityCommand}"
+                                                                            CommandParameter="{Binding}"
+                                                                            IsVisible="{Binding $parent[ItemsControl].DataContext.IsEditing}"
+                                                                            Background="Transparent"
+                                                                            Foreground="#E74C3C"
+                                                                            Cursor="Hand"
+                                                                            Padding="8,0"/>
+                                                                </DockPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                            
+                                            <!-- Status Message -->
+                                            <TextBlock Text="{Binding SaveMessage}"
+                                                       Foreground="{Binding IsSaveSuccess, 
+                                                           Converter={StaticResource BoolToColorConverter},
+                                                           ConverterParameter='#27AE60|#E74C3C'}"
+                                                       FontWeight="SemiBold"
+                                                       IsVisible="{Binding SaveMessage, 
+                                                           Converter={StaticResource StringIsNotNullOrEmpty}}"/>
+                                            
+                                            <!-- Buttons -->
+                                            <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+                                                
+                                                <Button Content="Edit Profile"
+                                                        Command="{Binding ToggleEditCommand}"
+                                                        IsVisible="{Binding IsEditing, 
+                                                            Converter={StaticResource InvertedBoolConverter}}"
+                                                        Background="#3498DB"
+                                                        Foreground="White"
+                                                        FontWeight="SemiBold"
+                                                        Padding="24,10"
+                                                        CornerRadius="6"
+                                                        Cursor="Hand"/>
+                                                
+                                                <Button Content="Save Changes"
+                                                        Command="{Binding SaveProfileCommand}"
+                                                        IsVisible="{Binding IsEditing}"
+                                                        Background="#27AE60"
+                                                        Foreground="White"
+                                                        FontWeight="SemiBold"
+                                                        Padding="24,10"
+                                                        CornerRadius="6"
+                                                        Cursor="Hand"/>
+                                                
+                                                <Button Content="Cancel"
+                                                        Command="{Binding ToggleEditCommand}"
+                                                        IsVisible="{Binding IsEditing}"
+                                                        Background="#95A5A6"
+                                                        Foreground="White"
+                                                        FontWeight="SemiBold"
+                                                        Padding="24,10"
+                                                        CornerRadius="6"
+                                                        Cursor="Hand"/>
+                                                
+                                            </StackPanel>
+                                            
+                                        </StackPanel>
+                                    </Grid>
                                     
                                 </StackPanel>
                                 
-                            </StackPanel>
-                        </Grid>
-                        
-                    </StackPanel>
+                            </DataTemplate>
+                        </ContentControl.DataTemplates>
+                    </ContentControl>
                     
-                </DataTemplate>
-            </ContentControl.DataTemplates>
-        </ContentControl>
-    </TabItem>
+                </ScrollViewer>
+            </TabItem>
 
         </TabControl>
 
-    </DockPanel>
+    </Grid>
 
 </Window>

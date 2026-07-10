@@ -9,7 +9,7 @@ using FitnessApp.Models;
 
 public class HealthRecordRepository
 {
-    private string filePath = "data/healthrecords.json";
+    private string filePath = "data/healthRecords.json";
     private List<HealthRecord> healthRecords;
 
     public HealthRecordRepository()
