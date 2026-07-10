@@ -92,7 +92,7 @@ public partial class RegisterTrainerViewModel : ObservableObject
             return;
         }
 
-        /*
+        
         // Provjeri da li email već postoji
         Trainer existing = trainerRepository.GetByEmail(Email);
         if (existing != null)
@@ -127,10 +127,7 @@ public partial class RegisterTrainerViewModel : ObservableObject
         };
 
         qualificationRepository.Add(qualification);
-        */
 
-        // TEST: Ispis podataka
-        Console.WriteLine($"✓ Trainer Registration: {FirstName} {LastName} ({Email})");
         SuccessMessage = $"Registration submitted! Trainer: {FirstName} {LastName}";
 
         // Očisti formu

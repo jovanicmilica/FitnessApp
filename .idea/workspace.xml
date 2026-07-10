@@ -11,17 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/TrainerMainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/feedbacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/feedbacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/tutelages.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/tutelages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/workouts.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/workouts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/data/qualifications.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/qualifications.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/data/trainers.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/trainers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" afterDir="false" />
@@ -64,6 +64,7 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/RatingToStarsConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/StringConverters.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/TrainerStatus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/TutelageStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Helpers/SeedDataHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Administrator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Client.cs" root0="SKIP_HIGHLIGHTING" />
@@ -200,7 +201,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/workout",
+    "git-widget-placeholder": "feature/trainer-register",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -332,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783680154209</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add workout viewing for client and trainer&#10;&#10;- Add My Workouts tab for client to view assigned workouts&#10;- Add My Workouts tab for trainer to view created workouts&#10;- Show workout details with exercises, sets, reps and duration">
+      <option name="closed" value="true" />
+      <created>1783686397567</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1783686397567</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,7 +365,8 @@
     <MESSAGE value="implement equipment, props and exercise CRUD for trainers&#10;&#10;- Add Equipment and Prop models with id, name, description, quantity fields&#10;- Add EquipmentRepository and PropRepository with full CRUD and JSON persistence&#10;- Add Equipment, Props and Exercises tabs to TrainerMainWindow&#10;- Implement add, edit, delete and clear form logic in TrainerMainViewModel&#10;- Fix logout navigation across all windows (separate LogoutRequested from CloseRequested)&#10;- Fix login routing to use parameterized constructors for proper event binding" />
     <MESSAGE value="add client profile tab and edit profile functionality" />
     <MESSAGE value="add health record on user profile&#10;&#10;- added health record edit functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="add health record on user profile&#10;&#10;- added health record edit functionality" />
+    <MESSAGE value="add workout viewing for client and trainer&#10;&#10;- Add My Workouts tab for client to view assigned workouts&#10;- Add My Workouts tab for trainer to view created workouts&#10;- Show workout details with exercises, sets, reps and duration" />
+    <option name="LAST_COMMIT_MESSAGE" value="add workout viewing for client and trainer&#10;&#10;- Add My Workouts tab for client to view assigned workouts&#10;- Add My Workouts tab for trainer to view created workouts&#10;- Show workout details with exercises, sets, reps and duration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

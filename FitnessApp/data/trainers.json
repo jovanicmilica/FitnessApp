@@ -18,5 +18,15 @@
     "LastName": "Brown",
     "Email": "emma.brown@email.com",
     "Password": "password"
+  },
+  {
+    "PricePerMonth": 120.00,
+    "Status": 1,
+    "Rating": 0,
+    "Id": 3,
+    "FirstName": "Jessica",
+    "LastName": "Park",
+    "Email": "jessica.park@email.com",
+    "Password": "password"
   }
 ]
