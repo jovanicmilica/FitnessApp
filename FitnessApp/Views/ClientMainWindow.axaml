@@ -5,8 +5,8 @@
         x:Class="FitnessApp.Views.ClientMainWindow"
         x:DataType="vm:ClientMainViewModel"
         Title="Fitness Mentoring — Client"
-        Width="900" Height="700"
-        MinWidth="850" MinHeight="650"
+        Width="1000" Height="800"
+        MinWidth="900" MinHeight="700"
         WindowStartupLocation="CenterScreen"
         CanResize="True"
         Background="#F5F5F5">
@@ -16,12 +16,13 @@
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         <converters:IsNotNullOrEmptyConverter x:Key="StringIsNotNullOrEmpty"/>
         <converters:RatingToStarsConverter x:Key="RatingToStarsConverter"/>
+        <converters:IsGreaterThanZeroConverter x:Key="IsGreaterThanZeroConverter"/>
     </Window.Resources>
 
     <Grid RowDefinitions="Auto,Auto,*" Margin="24">
 
         <!-- Header - red 0 -->
-        <DockPanel Grid.Row="0" Margin="0 0 0 16">
+        <DockPanel Grid.Row="0" Margin="0 0 0 12">
             <TextBlock Text="Welcome!"
                        FontSize="24"
                        FontWeight="Bold"
@@ -38,7 +39,7 @@
         </DockPanel>
 
         <!-- Status/Error poruke - red 1 -->
-        <StackPanel Grid.Row="1" Margin="0 0 0 12">
+        <StackPanel Grid.Row="1" Margin="0 0 0 8">
             <TextBlock Text="{Binding StatusMessage}"
                        Foreground="#27AE60"
                        FontWeight="SemiBold"
@@ -49,16 +50,14 @@
                        IsVisible="{Binding ErrorMessage, Converter={StaticResource StringIsNotNullOrEmpty}}"/>
         </StackPanel>
 
-        <!-- TabControl - red 2 (zauzima sav preostali prostor) -->
+        <!-- TabControl - red 2 -->
         <TabControl Grid.Row="2" Background="White">
 
             <!-- TAB 1: Search Trainers -->
             <TabItem Header="Search Trainers">
                 <Grid ColumnDefinitions="*,*" Margin="16">
 
-                    <!-- Lijeva kolona: lista trenera -->
-                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
-
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="10">
                         <TextBlock Text="Find Your Trainer"
                                    FontSize="18"
                                    FontWeight="Bold"
@@ -67,110 +66,115 @@
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <TextBox Text="{Binding SearchCriteria}"
                                      PlaceholderText="Search by name..."
-                                     Padding="12"
-                                     Height="42"
+                                     Padding="10"
+                                     Height="38"
                                      Width="200"
-                                     FontSize="14"/>
+                                     FontSize="13"/>
                             <Button Content="Search"
                                     Command="{Binding SearchTrainersCommand}"
-                                    Padding="24,8"
+                                    Padding="20,8"
                                     Background="#5BA3D0"
                                     Foreground="White"
                                     FontWeight="SemiBold"
                                     Cursor="Hand"/>
                         </StackPanel>
 
-                        <ListBox ItemsSource="{Binding AvailableTrainers}"
-                                 SelectedItem="{Binding SelectedTrainer}"
-                                 Height="400"
-                                 Padding="8">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
-                                        <StackPanel Spacing="6">
-                                            <TextBlock FontWeight="Bold" Foreground="#2C3E50">
-                                                <Run Text="{Binding FirstName}"/>
-                                                <Run Text="{Binding LastName}"/>
-                                            </TextBlock>
-                                            <TextBlock Text="{Binding PricePerMonth, StringFormat='${0:F2}/month'}"
-                                                       FontSize="12"
-                                                       Foreground="#555555"/>
-                                            <StackPanel Orientation="Horizontal" Spacing="4">
-                                                <TextBlock Text="{Binding Rating, Converter={StaticResource RatingToStarsConverter}}"
-                                                           FontSize="14"
-                                                           Foreground="#F39C12"/>
-                                                <TextBlock Text="{Binding Rating, StringFormat='({0:F1})'}"
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="350">
+                            <ListBox ItemsSource="{Binding AvailableTrainers}"
+                                     SelectedItem="{Binding SelectedTrainer}"
+                                     Padding="6">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="10" Background="#F9F9F9" CornerRadius="4" Margin="6">
+                                            <StackPanel Spacing="4">
+                                                <TextBlock FontWeight="Bold" Foreground="#2C3E50" FontSize="14">
+                                                    <Run Text="{Binding FirstName}"/>
+                                                    <Run Text="{Binding LastName}"/>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding PricePerMonth, StringFormat='${0:F2}/month'}"
                                                            FontSize="11"
-                                                           Foreground="#888888"/>
+                                                           Foreground="#555555"/>
+                                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                                    <TextBlock Text="{Binding Rating, Converter={StaticResource RatingToStarsConverter}}"
+                                                               FontSize="13"
+                                                               Foreground="#F39C12"/>
+                                                    <TextBlock Text="{Binding Rating, StringFormat='({0:F1})'}"
+                                                               FontSize="10"
+                                                               Foreground="#888888"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
 
+                        <Button Content="View Trainer Feedbacks"
+                                Command="{Binding ViewTrainerFeedbacksCommand}"
+                                Padding="20,8"
+                                Background="#A966D3"
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Cursor="Hand"/>
                     </StackPanel>
 
-                    <!-- Desna kolona: forma za zahtjev -->
-                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
-
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="10">
                         <TextBlock Text="Send Request"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    Foreground="#2C3E50"/>
 
                         <TextBlock Text="Your Goals"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding Goals}"
                                  PlaceholderText="e.g. Lose weight, build muscle..."
-                                 Height="70"
-                                 Padding="12"
-                                 FontSize="13"
+                                 Height="60"
+                                 Padding="10"
+                                 FontSize="12"
                                  AcceptsReturn="True"/>
 
                         <TextBlock Text="Location Preference"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding LocationPreference}"
                                  PlaceholderText="e.g. Gym, Home, Outdoor"
-                                 Padding="12"
-                                 Height="42"
-                                 FontSize="13"/>
+                                 Padding="10"
+                                 Height="36"
+                                 FontSize="12"/>
 
                         <TextBlock Text="Time Preference"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding TimePreference}"
                                  PlaceholderText="e.g. Mornings, Weekends"
-                                 Padding="12"
-                                 Height="42"
-                                 FontSize="13"/>
+                                 Padding="10"
+                                 Height="36"
+                                 FontSize="12"/>
 
                         <TextBlock Text="Health Issues (optional)"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding HealthIssues}"
                                  PlaceholderText="e.g. Bad knee, asthma..."
-                                 Height="70"
-                                 Padding="12"
-                                 FontSize="13"
+                                 Height="60"
+                                 Padding="10"
+                                 FontSize="12"
                                  AcceptsReturn="True"/>
 
                         <Button Content="Send Request"
                                 Command="{Binding SendTutelageRequestCommand}"
                                 HorizontalAlignment="Stretch"
-                                Padding="20,12"
+                                Padding="20,10"
                                 Background="#4EBF7E"
                                 Foreground="White"
                                 FontWeight="SemiBold"
                                 FontSize="14"
                                 Cursor="Hand"/>
-
                     </StackPanel>
 
                 </Grid>
@@ -180,188 +184,374 @@
             <TabItem Header="My Tutelages">
                 <Grid ColumnDefinitions="*,*" Margin="16">
 
-                    <!-- Lijeva kolona: lista mentorstva -->
-                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
-
+                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="10">
                         <TextBlock Text="My Tutelages"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    Foreground="#2C3E50"/>
 
-                        <ListBox ItemsSource="{Binding MyTutelages}"
-                                 SelectedItem="{Binding SelectedTutelage}"
-                                 Height="380"
-                                 Padding="8">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
-                                        <StackPanel Spacing="6">
-                                            <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"
-                                                       FontWeight="Bold"
-                                                       Foreground="#2C3E50"/>
-                                            <TextBlock Text="{Binding StartDate, StringFormat='Start: {0:dd/MM/yyyy}'}"
-                                                       FontSize="12"
-                                                       Foreground="#555555"/>
-                                            <TextBlock Text="{Binding EndDate, StringFormat='End: {0:dd/MM/yyyy}'}"
-                                                       FontSize="12"
-                                                       Foreground="#555555"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="400">
+                            <ListBox ItemsSource="{Binding MyTutelages}"
+                                     SelectedItem="{Binding SelectedTutelage}"
+                                     Padding="6">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="10" Background="#F9F9F9" CornerRadius="4" Margin="6">
+                                            <StackPanel Spacing="4">
+                                                <TextBlock FontWeight="Bold" Foreground="#2C3E50" FontSize="13">
+                                                    <Run Text="{Binding Status, StringFormat='Status: {0}'}"/>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding StartDate, StringFormat='Start: {0:dd/MM/yyyy}'}"
+                                                           FontSize="11"
+                                                           Foreground="#555555"/>
+                                                <TextBlock Text="{Binding EndDate, StringFormat='End: {0:dd/MM/yyyy}'}"
+                                                           FontSize="11"
+                                                           Foreground="#555555"/>
+                                                <TextBlock Text="{Binding TrainerId, StringFormat='Trainer ID: {0}'}"
+                                                           FontSize="10"
+                                                           Foreground="#888888"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
 
                         <Button Content="Pay for Tutelage"
                                 Command="{Binding PayForTutelageCommand}"
                                 HorizontalAlignment="Stretch"
-                                Padding="20,10"
+                                Padding="20,8"
                                 Background="#FFA04D"
                                 Foreground="White"
                                 FontWeight="SemiBold"
                                 Cursor="Hand"/>
-
                     </StackPanel>
 
-                    <!-- Desna kolona: feedback forma -->
-                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
-
-                        <TextBlock Text="Leave Feedback"
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="10">
+                        <TextBlock Text="Rate Your Trainer"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    Foreground="#2C3E50"/>
+                        
+                        <TextBlock Text="Leave feedback for your trainer"
+                                   FontSize="12"
+                                   Foreground="#888888"
+                                   Margin="0,-4,0,0"/>
+
+                        <Border Height="1" Background="#E0E0E0"/>
 
                         <TextBlock Text="Rating (1-5)"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <NumericUpDown Value="{Binding FeedbackRating}"
                                        Minimum="1"
                                        Maximum="5"
                                        Increment="1"
-                                       Padding="12"
-                                       Height="42"
+                                       Padding="10"
+                                       Height="38"
                                        FontSize="13"/>
 
                         <TextBlock Text="Comment"
-                                   FontSize="14"
+                                   FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="#333333"/>
                         <TextBox Text="{Binding FeedbackComment}"
-                                 PlaceholderText="Share your experience..."
-                                 Height="120"
-                                 Padding="12"
-                                 FontSize="13"
+                                 PlaceholderText="Share your experience with this trainer..."
+                                 Height="100"
+                                 Padding="10"
+                                 FontSize="12"
                                  AcceptsReturn="True"/>
 
-                        <Button Content="Submit Feedback"
+                        <Button Content="Submit Trainer Feedback"
                                 Command="{Binding LeaveFeedbackCommand}"
                                 HorizontalAlignment="Stretch"
-                                Padding="20,12"
+                                Padding="20,10"
                                 Background="#A966D3"
                                 Foreground="White"
                                 FontWeight="SemiBold"
                                 FontSize="14"
                                 Cursor="Hand"/>
-
+                        
+                        <TextBlock Text="💡 Select a tutelage first, then rate your trainer"
+                                   FontSize="11"
+                                   Foreground="#888888"
+                                   TextWrapping="Wrap"/>
                     </StackPanel>
 
                 </Grid>
             </TabItem>
 
-            <!-- TAB 4: My Workouts  -->
-            <TabItem Header="My Workouts">
-                <Grid ColumnDefinitions="*,*" Margin="16">
+            <!-- TAB 3: My Workouts -->
+<TabItem Header="My Workouts">
+    <Grid ColumnDefinitions="*,*" Margin="16">
 
-                    <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="12">
-                        <TextBlock Text="My Workouts"
-                                   FontSize="18"
-                                   FontWeight="Bold"
-                                   Foreground="#2C3E50"/>
+        <StackPanel Grid.Column="0" Margin="0 0 16 0" Spacing="10">
+            <TextBlock Text="My Workouts"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
 
-                        <ListBox ItemsSource="{Binding MyWorkouts}"
-                                 SelectedItem="{Binding SelectedWorkout}"
-                                 Height="400"
-                                 Padding="8">
-                            <ListBox.ItemTemplate>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="350">
+                <ListBox ItemsSource="{Binding MyWorkouts}"
+                         SelectedItem="{Binding SelectedWorkout}"
+                         Padding="6">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" Background="#F9F9F9" CornerRadius="4" Margin="6">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="{Binding Name}"
+                                               FontWeight="Bold"
+                                               FontSize="14"
+                                               Foreground="#2C3E50"/>
+                                    <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"
+                                               FontSize="11"
+                                               Foreground="#555555"/>
+                                    <TextBlock Text="{Binding DateCreated, StringFormat='Created: {0:dd/MM/yyyy}'}"
+                                               FontSize="10"
+                                               Foreground="#888888"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+
+            <Button Content="View Details"
+                    Command="{Binding ViewWorkoutDetailsCommand}"
+                    HorizontalAlignment="Stretch"
+                    Padding="20,8"
+                    Background="#5BA3D0"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+
+            <Button Content="Show/Hide Exercise Ratings"
+                    Command="{Binding ShowExerciseFeedbackForWorkoutCommand}"
+                    HorizontalAlignment="Stretch"
+                    Padding="20,8"
+                    Background="#5BA3D0"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="8">
+            <TextBlock Text="Workout Details"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+
+            <Border Background="#F9F9F9" 
+                    CornerRadius="4" 
+                    Padding="12"
+                    Height="140">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="{Binding SelectedWorkoutDetails}"
+                                   TextWrapping="Wrap"
+                                   Foreground="#555555"
+                                   FontSize="12"/>
+                        
+                        <TextBlock Text="Exercises:"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"
+                                   Margin="0,4,0,0"
+                                   FontSize="12"/>
+                        
+                        <ItemsControl ItemsSource="{Binding SelectedWorkoutExercises}">
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
-                                        <StackPanel Spacing="6">
-                                            <TextBlock Text="{Binding Name}"
+                                    <Border Background="White" 
+                                            CornerRadius="4" 
+                                            Padding="6,2" 
+                                            Margin="0,1">
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <TextBlock Text="{Binding ExerciseName}"
+                                                       FontSize="11"
                                                        FontWeight="Bold"
                                                        Foreground="#2C3E50"/>
-                                            <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}"
-                                                       FontSize="12"
+                                            <TextBlock Text="{Binding Sets, StringFormat='Sets: {0}'}"
+                                                       FontSize="10"
                                                        Foreground="#555555"/>
-                                            <TextBlock Text="{Binding DateCreated, StringFormat='Created: {0:dd/MM/yyyy}'}"
-                                                       FontSize="11"
-                                                       Foreground="#888888"/>
+                                            <TextBlock Text="{Binding Repetitions, StringFormat='Reps: {0}'}"
+                                                       FontSize="10"
+                                                       Foreground="#555555"/>
+                                            <TextBlock Text="{Binding DurationInSeconds, StringFormat='Duration: {0}s'}"
+                                                       FontSize="10"
+                                                       Foreground="#555555"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
 
-                        <Button Content="View Details"
-                                Command="{Binding ViewWorkoutDetailsCommand}"
+            <!-- Workout Feedback - sa skrolom -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Disabled"
+                          Height="370">
+                
+                <StackPanel Spacing="6">
+                    
+                    <TextBlock Text="⭐ Rate This Workout"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="#2C3E50"/>
+
+                    <TextBlock Text="Rating (1-5)"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"/>
+                    <NumericUpDown Value="{Binding WorkoutFeedbackRating}"
+                                   Minimum="1"
+                                   Maximum="5"
+                                   Increment="1"
+                                   Padding="10"
+                                   Height="35"/>
+
+                    <TextBlock Text="Comment"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"/>
+                    <TextBox Text="{Binding WorkoutFeedbackComment}"
+                             PlaceholderText="How was this workout?"
+                             Height="50"
+                             Padding="10"
+                             AcceptsReturn="True"/>
+
+                    <Button Content="Submit Workout Feedback"
+                            Command="{Binding LeaveWorkoutFeedbackCommand}"
+                            HorizontalAlignment="Stretch"
+                            Padding="20,8"
+                            Background="#A966D3"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"/>
+
+                    <!-- Exercise Feedback -->
+                    <StackPanel IsVisible="{Binding IsExerciseFeedbackVisible}" Spacing="6">
+                        
+                        <Border Height="1" Background="#E0E0E0" Margin="0,4,0,4"/>
+
+                        <TextBlock Text="🏋️ Rate Individual Exercise"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#2C3E50"/>
+
+                        <TextBlock Text="Select Exercise"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        
+                        <ComboBox ItemsSource="{Binding WorkoutExercisesForFeedback}"
+                                  SelectedItem="{Binding SelectedExercise}"
+                                  Padding="8"
+                                  Height="35">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Rating (1-5)"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <NumericUpDown Value="{Binding ExerciseFeedbackRating}"
+                                       Minimum="1"
+                                       Maximum="5"
+                                       Increment="1"
+                                       Padding="10"
+                                       Height="35"/>
+
+                        <TextBlock Text="Comment"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#333333"/>
+                        <TextBox Text="{Binding ExerciseFeedbackComment}"
+                                 PlaceholderText="How was this exercise?"
+                                 Height="50"
+                                 Padding="10"
+                                 AcceptsReturn="True"/>
+
+                        <TextBlock Text="{Binding ExerciseFeedbackMessage}"
+                                   Foreground="#27AE60"
+                                   FontWeight="SemiBold"
+                                   FontSize="12"
+                                   IsVisible="{Binding ExerciseFeedbackMessage, 
+                                       Converter={StaticResource StringIsNotNullOrEmpty}}"/>
+
+                        <Button Content="Submit Exercise Feedback"
+                                Command="{Binding LeaveExerciseFeedbackCommand}"
                                 HorizontalAlignment="Stretch"
-                                Padding="20,10"
-                                Background="#5BA3D0"
+                                Padding="20,8"
+                                Background="#E67E22"
                                 Foreground="White"
                                 FontWeight="SemiBold"
                                 Cursor="Hand"/>
                     </StackPanel>
+                    
+                </StackPanel>
+            </ScrollViewer>
 
-                    <StackPanel Grid.Column="1" Margin="16 0 0 0" Spacing="12">
-                        <TextBlock Text="Workout Details"
-                                   FontSize="18"
-                                   FontWeight="Bold"
-                                   Foreground="#2C3E50"/>
+        </StackPanel>
 
+    </Grid>
+</TabItem>
+
+<!-- TAB 4: My Feedbacks -->
+<TabItem Header="My Feedbacks">
+    <StackPanel Margin="16" Spacing="12">
+        <TextBlock Text="My Feedbacks"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="#2C3E50"/>
+
+        <TextBlock Text="Feedbacks you have given"
+                   FontSize="12"
+                   Foreground="#888888"/>
+
+        <Border Height="1" Background="#E0E0E0"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
+            <ItemsControl ItemsSource="{Binding MyFeedbacks}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
                         <Border Background="#F9F9F9" 
                                 CornerRadius="4" 
-                                Padding="16"
-                                Height="400">
-                            <StackPanel Spacing="8">
-                                <TextBlock Text="{Binding SelectedWorkoutDetails}"
+                                Padding="12" 
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal" Spacing="12">
+                                    <TextBlock Text="{Binding TargetType}"
+                                               FontWeight="Bold"
+                                               FontSize="13"
+                                               Foreground="#2C3E50"/>
+                                    <TextBlock Text="{Binding TargetName}"
+                                               FontWeight="SemiBold"
+                                               FontSize="13"
+                                               Foreground="#2C3E50"/>
+                                    <TextBlock Text="{Binding Rating, StringFormat='⭐ {0}/5'}"
+                                               FontSize="13"
+                                               Foreground="#F39C12"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Comment}"
                                            TextWrapping="Wrap"
-                                           Foreground="#555555"
-                                           FontSize="13"/>
-                                
-                                <TextBlock Text="Exercises:"
-                                           FontWeight="SemiBold"
-                                           Foreground="#333333"
-                                           Margin="0,8,0,0"/>
-                                
-                                <ItemsControl ItemsSource="{Binding SelectedWorkoutExercises}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Background="White" 
-                                                    CornerRadius="4" 
-                                                    Padding="8,4" 
-                                                    Margin="0,2">
-                                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                                    <TextBlock Text="{Binding Sets, StringFormat='Sets: {0}'}"
-                                                               FontSize="12"
-                                                               Foreground="#2C3E50"/>
-                                                    <TextBlock Text="{Binding Repetitions, StringFormat='Reps: {0}'}"
-                                                               FontSize="12"
-                                                               Foreground="#555555"/>
-                                                    <TextBlock Text="{Binding DurationInSeconds, StringFormat='Duration: {0}s'}"
-                                                               FontSize="12"
-                                                               Foreground="#555555"/>
-                                                </StackPanel>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                           FontSize="12"
+                                           Foreground="#555555"/>
                             </StackPanel>
                         </Border>
-                    </StackPanel>
-
-                </Grid>
-            </TabItem>
-
-            <!-- TAB 3: Profile -->
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </StackPanel>
+</TabItem>
+            <!-- TAB 5: Profile -->
             <TabItem Header="Profile">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" 
                               HorizontalScrollBarVisibility="Disabled">
@@ -372,7 +562,6 @@
                                 
                                 <StackPanel Margin="24" Spacing="16">
                                     
-                                    <!-- Title -->
                                     <TextBlock Text="Profile Settings"
                                                FontSize="20"
                                                FontWeight="Bold"
@@ -385,16 +574,13 @@
                                     
                                     <Border Height="1" Background="#E0E0E0"/>
                                     
-                                    <!-- Loading -->
                                     <Grid IsVisible="{Binding IsLoading}">
                                         <TextBlock Text="Saving..." Foreground="#3498DB" FontWeight="SemiBold"/>
                                     </Grid>
                                     
-                                    <!-- Profile Form -->
                                     <Grid IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
                                         <StackPanel Spacing="12">
                                             
-                                            <!-- First Name -->
                                             <StackPanel Spacing="4">
                                                 <TextBlock Text="First Name" FontWeight="SemiBold" Foreground="#333"/>
                                                 <TextBox Text="{Binding FirstName}"
@@ -404,7 +590,6 @@
                                                          Height="40"/>
                                             </StackPanel>
                                             
-                                            <!-- Last Name -->
                                             <StackPanel Spacing="4">
                                                 <TextBlock Text="Last Name" FontWeight="SemiBold" Foreground="#333"/>
                                                 <TextBox Text="{Binding LastName}"
@@ -414,7 +599,6 @@
                                                          Height="40"/>
                                             </StackPanel>
                                             
-                                            <!-- Email -->
                                             <StackPanel Spacing="4">
                                                 <TextBlock Text="Email" FontWeight="SemiBold" Foreground="#333"/>
                                                 <TextBox Text="{Binding Email}"
@@ -424,7 +608,6 @@
                                                          Height="40"/>
                                             </StackPanel>
                                             
-                                            <!-- Password -->
                                             <StackPanel Spacing="4">
                                                 <TextBlock Text="Password" FontWeight="SemiBold" Foreground="#333"/>
                                                 <TextBox Text="{Binding Password}"
@@ -435,7 +618,6 @@
                                                          Height="40"/>
                                             </StackPanel>
 
-                                            <!-- Health Information -->
                                             <Border Height="1" Background="#E0E0E0" Margin="0,8,0,8"/>
 
                                             <TextBlock Text="Health Information"
@@ -443,7 +625,6 @@
                                                        FontWeight="Bold"
                                                        Foreground="#2C3E50"/>
 
-                                            <!-- Health Conditions -->
                                             <StackPanel Spacing="4">
                                                 <TextBlock Text="Health Conditions" FontWeight="SemiBold" Foreground="#333"/>
                                                 
@@ -489,7 +670,6 @@
                                                 </ItemsControl>
                                             </StackPanel>
 
-                                            <!-- Disabilities -->
                                             <StackPanel Spacing="4" Margin="0,8,0,0">
                                                 <TextBlock Text="Disabilities" FontWeight="SemiBold" Foreground="#333"/>
                                                 
@@ -535,7 +715,6 @@
                                                 </ItemsControl>
                                             </StackPanel>
                                             
-                                            <!-- Status Message -->
                                             <TextBlock Text="{Binding SaveMessage}"
                                                        Foreground="{Binding IsSaveSuccess, 
                                                            Converter={StaticResource BoolToColorConverter},
@@ -544,7 +723,6 @@
                                                        IsVisible="{Binding SaveMessage, 
                                                            Converter={StaticResource StringIsNotNullOrEmpty}}"/>
                                             
-                                            <!-- Buttons -->
                                             <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
                                                 
                                                 <Button Content="Edit Profile"

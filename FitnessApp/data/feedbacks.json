@@ -2,8 +2,32 @@
   {
     "Id": 1,
     "Rating": 5,
-    "Comment": "Best experience ever!",
+    "Comment": "Good trainer, knowledgeable and friendly. Would recommend to others.",
     "TargetType": 0,
+    "TargetId": 2,
+    "ClientId": 2
+  },
+  {
+    "Id": 2,
+    "Rating": 4,
+    "Comment": "Great workout, good variety of exercises. Could use more cardio.",
+    "TargetType": 1,
+    "TargetId": 1,
+    "ClientId": 2
+  },
+  {
+    "Id": 3,
+    "Rating": 3,
+    "Comment": "Okay exercise, can be uncomfortable if not done correctly.",
+    "TargetType": 2,
+    "TargetId": 1,
+    "ClientId": 2
+  },
+  {
+    "Id": 4,
+    "Rating": 5,
+    "Comment": "Very good exercise!",
+    "TargetType": 2,
     "TargetId": 2,
     "ClientId": 2
   }

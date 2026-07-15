@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using FitnessApp.Enums; 
+using FitnessApp.Repositories;
 
 public class WorkoutExercise
 {
@@ -19,6 +20,21 @@ public class WorkoutExercise
     public int DurationInSeconds { get => durationInSeconds; set => durationInSeconds = value; }
     public int WorkoutId { get => workoutId; set => workoutId = value; }
     public int ExerciseId { get => exerciseId; set => exerciseId = value; }
+
+    public string ExerciseName
+    {
+        get
+        {
+            var repo = new ExerciseRepository();
+            var exercise = repo.GetById(ExerciseId);
+            return exercise?.Name ?? $"Exercise {ExerciseId}";
+        }
+    }
+
+    public override string ToString()
+    {
+        return ExerciseName;
+    }
 
     public WorkoutExercise(int exerciseId, int sets, int repetitions, int durationInSeconds)
     {
