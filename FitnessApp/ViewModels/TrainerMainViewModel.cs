@@ -53,9 +53,8 @@ public partial class TrainerMainViewModel : ObservableObject
     [ObservableProperty]
     private string workoutName = string.Empty;
 
-    // Feedback pregled
     [ObservableProperty]
-    private ObservableCollection<Feedback> myFeedbacks = new();
+	private ObservableCollection<FeedbackDisplay> myFeedbacks = new();
 
     // Plaćanje pretplate
     [ObservableProperty]
@@ -199,15 +198,31 @@ public partial class TrainerMainViewModel : ObservableObject
     }
 
     private void LoadFeedbacks()
+{
+    MyFeedbacks.Clear();
+    var feedbacks = feedbackRepository.GetAll()
+        .Where(f => f.TargetType == FeedbackTargetType.TRAINER && 
+                   f.TargetId == currentTrainer.Id)
+        .OrderByDescending(f => f.Id);
+    
+    foreach (var f in feedbacks)
     {
-        MyFeedbacks.Clear();
-        foreach (var feedback in feedbackRepository.GetAll())
+        string clientName = "Unknown Client";
+        var client = clientRepository.GetById(f.ClientId);
+        if (client != null)
         {
-            if (feedback.TargetType == FeedbackTargetType.TRAINER &&
-                feedback.TargetId == currentTrainer.Id)
-                MyFeedbacks.Add(feedback);
+            clientName = $"{client.FirstName} {client.LastName}";
         }
+        
+        MyFeedbacks.Add(new FeedbackDisplay
+        {
+            Rating = f.Rating,
+            Comment = f.Comment,
+            TargetType = "👤 Client",
+            TargetName = clientName
+        });
     }
+}
     
     private void LoadEquipment()
     {

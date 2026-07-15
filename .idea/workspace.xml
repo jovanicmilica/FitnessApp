@@ -11,19 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1f659-21d9-4b95-a407-6f89ad9e8b28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Converters/IsGreaterThanZeroConverter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitnessApp/Models/FeedbackDisplay.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Repositories/TrainerRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/bin/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/qualifications.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/qualifications.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessApp/data/trainers.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/trainers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/data/feedbacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/data/feedbacks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/Avalonia/resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitnessApp/obj/Debug/net8.0/FitnessApp.sourcelink.json" afterDir="false" />
@@ -60,9 +62,11 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/BoolToPaidConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/BoolToTextConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/InvertedBoolConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/IsGreaterThanZeroConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/ObjectConverters.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/RatingToStarsConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Converters/StringConverters.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/FeedbackTargetType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/TrainerStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Enums/TutelageStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Helpers/SeedDataHelper.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,22 +75,24 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Equipment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Exercise.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Feedback.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/FeedbackDisplay.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/HealthRecord.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Message.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Payment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Prop.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Qualification.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Questionnaire.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Trainer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Tutelage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Models/Workout.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Models/WorkoutExercise.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/AdminRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/ClientRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/EquipmentRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/ExerciseRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/FeedbackRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/HealthRecordRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/PropRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/QualificationRepository.cs" root0="SKIP_HIGHLIGHTING" />
@@ -94,12 +100,12 @@
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/WorkoutExerciseRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Repositories/WorkoutRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/AdminMainViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientMainViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/ClientProfileViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/LoginViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterClientViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/RegisterTrainerViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/TrainerMainViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/ViewModels/TrainerProfileViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/AdminMainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FitnessApp/Views/ClientMainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,18 +131,18 @@
       <entry key="S2" value="1.0" />
       <entry key="S5" value="1.0" />
       <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000000000007" />
-      <entry key="S60" value="1.0000000250794914" />
-      <entry key="M2" value="1.000158365057458" />
-      <entry key="M5" value="1.0302077458599443" />
-      <entry key="M10" value="1.1953882926862474" />
-      <entry key="M15" value="1.5609523866676374" />
-      <entry key="M30" value="7.08853369632361" />
-      <entry key="H1" value="73.0822949679945" />
-      <entry key="H2" value="331.8193382340798" />
-      <entry key="H4" value="782.2839596780987" />
-      <entry key="D1" value="1907.8194246500284" />
-      <entry key="W1" value="2292.9442491450113" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0000000000001459" />
+      <entry key="M2" value="1.000001832481805" />
+      <entry key="M5" value="1.0334391342921634" />
+      <entry key="M10" value="1.8896532423038515" />
+      <entry key="M15" value="3.684755067605552" />
+      <entry key="M30" value="10.372303343952979" />
+      <entry key="H1" value="49.458884710729336" />
+      <entry key="H2" value="248.54080208175972" />
+      <entry key="H4" value="672.4019977866092" />
+      <entry key="D1" value="1873.9314030623996" />
+      <entry key="W1" value="2306.8899539690724" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -144,37 +150,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="1.702761210908511E-170" />
-      <entry key="S60" value="1.3048989275382198E-85" />
-      <entry key="M2" value="3.612364876898713E-43" />
-      <entry key="M5" value="1.0639703812055176E-17" />
-      <entry key="M10" value="3.5525775178406614E-9" />
-      <entry key="M15" value="2.646118825801337E-6" />
-      <entry key="M30" value="0.0021540225573141534" />
-      <entry key="H1" value="0.06448255589989718" />
-      <entry key="H2" value="0.3646867468918741" />
-      <entry key="H4" value="0.9305263253868269" />
-      <entry key="D1" value="2.396664798194719" />
-      <entry key="W1" value="2.9026252174523175" />
+      <entry key="S30" value="1.0990906671339175E-208" />
+      <entry key="S60" value="1.0483752511631123E-104" />
+      <entry key="M2" value="1.0239094562375431E-52" />
+      <entry key="M5" value="1.6140519744239159E-21" />
+      <entry key="M10" value="4.375599375427244E-11" />
+      <entry key="M15" value="1.411254484489346E-7" />
+      <entry key="M30" value="4.974486346492183E-4" />
+      <entry key="H1" value="0.03098783546900353" />
+      <entry key="H2" value="0.2528101346323227" />
+      <entry key="H4" value="0.774757722334876" />
+      <entry key="D1" value="2.3245925342271634" />
+      <entry key="W1" value="2.889991815352311" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.4133989516176494E-11" />
-      <entry key="MS500" value="0.008065613558462822" />
-      <entry key="S2" value="0.2996810988934803" />
-      <entry key="S5" value="0.6175380769146677" />
-      <entry key="S10" value="0.785835909662232" />
-      <entry key="S30" value="0.9228064545062389" />
-      <entry key="S60" value="0.960628181282845" />
-      <entry key="M2" value="0.9802747387641462" />
-      <entry key="M5" value="1.0222043982521545" />
-      <entry key="M10" value="1.1913729327037013" />
-      <entry key="M15" value="1.558266269382734" />
-      <entry key="M30" value="7.089269883700584" />
-      <entry key="H1" value="73.14573129366141" />
-      <entry key="H2" value="332.1828728416139" />
-      <entry key="H4" value="783.2133606444277" />
-      <entry key="D1" value="1910.2156734580642" />
-      <entry key="W1" value="2295.8468038380565" />
+      <entry key="MS100" value="0.8066417592221263" />
+      <entry key="MS500" value="0.9579352182226964" />
+      <entry key="S2" value="0.9893137269832234" />
+      <entry key="S5" value="0.9957117085734725" />
+      <entry key="S10" value="0.997853550664361" />
+      <entry key="S30" value="0.9992840043607165" />
+      <entry key="S60" value="0.9996419380763335" />
+      <entry key="M2" value="0.9998227848280932" />
+      <entry key="M5" value="1.0333614905249389" />
+      <entry key="M10" value="1.8895046542155796" />
+      <entry key="M15" value="3.6844623261942586" />
+      <entry key="M30" value="10.372274545153534" />
+      <entry key="H1" value="49.48920262106363" />
+      <entry key="H2" value="248.79270469514236" />
+      <entry key="H4" value="673.1757563904919" />
+      <entry key="D1" value="1876.255580543043" />
+      <entry key="W1" value="2309.7798738818656" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -201,7 +207,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/trainer-register",
+    "git-widget-placeholder": "feature/feedback",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
