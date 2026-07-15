@@ -273,33 +273,49 @@
             </TabItem>
 
             <!-- Tab 3: My Feedbacks -->
-            <TabItem Header="My Feedbacks">
-                <StackPanel Margin="16" Spacing="12">
-                    <TextBlock Text="Feedback from Clients"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               Foreground="#2C3E50"/>
+<TabItem Header="My Feedbacks">
+    <StackPanel Margin="16" Spacing="12">
+        <TextBlock Text="Feedback from Clients"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="#2C3E50"/>
 
-                    <ListBox ItemsSource="{Binding MyFeedbacks}"
-                             Height="450"
-                             Padding="8">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border Padding="12" Background="#F9F9F9" CornerRadius="4" Margin="8">
-                                    <StackPanel Spacing="8">
-                                        <TextBlock Text="{Binding Rating, StringFormat='Rating: {0}/5'}"
-                                                   FontWeight="Bold"
-                                                   Foreground="#2C3E50"/>
-                                        <TextBlock Text="{Binding Comment}"
-                                                   TextWrapping="Wrap"
-                                                   Foreground="#555555"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-            </TabItem>
+        <TextBlock Text="Ratings and comments from your clients"
+                   FontSize="12"
+                   Foreground="#888888"/>
+
+        <Border Height="1" Background="#E0E0E0"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="450">
+            <ItemsControl ItemsSource="{Binding MyFeedbacks}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F9F9F9" 
+                                CornerRadius="4" 
+                                Padding="12" 
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal" Spacing="12">
+                                    <TextBlock Text="{Binding TargetName}"
+                                               FontWeight="Bold"
+                                               FontSize="13"
+                                               Foreground="#2C3E50"/>
+                                    <TextBlock Text="{Binding Rating, StringFormat='⭐ {0}/5'}"
+                                               FontSize="13"
+                                               Foreground="#F39C12"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Comment}"
+                                           TextWrapping="Wrap"
+                                           FontSize="12"
+                                           Foreground="#555555"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </StackPanel>
+</TabItem>
 
             <!-- Tab 4: Subscription -->
             <TabItem Header="Subscription">
