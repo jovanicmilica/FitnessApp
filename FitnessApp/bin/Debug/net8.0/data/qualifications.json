@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "Name": "Certified Personal Trainer (CPT)",
+    "Institution": "International Fitness Association",
+    "CertificateUrl": "https://certificates.example.com/cpt-001",
+    "DateIssued": "2020-06-15T00:00:00",
+    "TrainerId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Nutrition Specialist",
+    "Institution": "National Board of Fitness Examiners",
+    "CertificateUrl": "https://certificates.example.com/nutrition-001",
+    "DateIssued": "2021-03-20T00:00:00",
+    "TrainerId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Certified Strength and Conditioning Specialist (CSCS)",
+    "Institution": "National Strength and Conditioning Association",
+    "CertificateUrl": "https://certificates.example.com/cscs-001",
+    "DateIssued": "2019-09-10T00:00:00",
+    "TrainerId": 2
+  },
+  {
+    "Id": 4,
+    "Name": "Group Fitness Instructor",
+    "Institution": "American Council on Exercise",
+    "CertificateUrl": "https://certificates.example.com/gfi-001",
+    "DateIssued": "2022-01-25T00:00:00",
+    "TrainerId": 2
+  },
+  {
+    "Id": 5,
+    "Name": "Certified Nutrition Coach",
+    "Institution": "Precision Nutrition",
+    "CertificateUrl": "https://certificates.example.com/nutrition-003",
+    "DateIssued": "2021-07-07T00:00:00",
+    "TrainerId": 1
+  },
+  {
+    "Id": 6,
+    "Name": "Pilates Instructor",
+    "Institution": "Pilates Method Alliance",
+    "CertificateUrl": "https://pilates-certificate.com",
+    "DateIssued": "2024-07-18T00:00:00",
+    "TrainerId": 3
+  }
+]

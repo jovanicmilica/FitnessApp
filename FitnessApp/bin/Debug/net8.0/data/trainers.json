@@ -1,0 +1,32 @@
+[
+  {
+    "PricePerMonth": 99.99,
+    "Status": 1,
+    "Rating": 5,
+    "Id": 1,
+    "FirstName": "Michael",
+    "LastName": "Williams",
+    "Email": "michael.williams@email.com",
+    "Password": "password"
+  },
+  {
+    "PricePerMonth": 89.99,
+    "Status": 1,
+    "Rating": 4,
+    "Id": 2,
+    "FirstName": "Emma",
+    "LastName": "Brown",
+    "Email": "emma.brown@email.com",
+    "Password": "password"
+  },
+  {
+    "PricePerMonth": 120.00,
+    "Status": 1,
+    "Rating": 0,
+    "Id": 3,
+    "FirstName": "Jessica",
+    "LastName": "Park",
+    "Email": "jessica.park@email.com",
+    "Password": "password"
+  }
+]

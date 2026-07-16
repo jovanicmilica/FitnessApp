@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "Status": 1,
+    "StartDate": "2026-07-10T14:20:14.0032449+02:00",
+    "EndDate": "2026-08-10T14:20:14.0034224+02:00",
+    "ClientId": 2,
+    "TrainerId": 2,
+    "QuestionnaireId": 1
+  }
+]

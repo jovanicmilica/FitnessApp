@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "Name": "Push Up",
+    "Description": "Upper body exercise targeting chest and triceps",
+    "VideoUrl": "https://youtube.com/pushup",
+    "Duration": 30
+  },
+  {
+    "Id": 2,
+    "Name": "Squat",
+    "Description": "Lower body compound movement targeting quads and glutes",
+    "VideoUrl": "https://youtube.com/squat",
+    "Duration": 45
+  }
+]

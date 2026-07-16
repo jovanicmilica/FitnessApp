@@ -1,0 +1,18 @@
+[
+  {
+    "HealthRecordId": 1,
+    "Id": 1,
+    "FirstName": "John",
+    "LastName": "Smith",
+    "Email": "john.smith@email.com",
+    "Password": "password"
+  },
+  {
+    "HealthRecordId": 2,
+    "Id": 2,
+    "FirstName": "Sarah",
+    "LastName": "Johnson",
+    "Email": "sarah.johnson@email.com",
+    "Password": "password"
+  }
+]

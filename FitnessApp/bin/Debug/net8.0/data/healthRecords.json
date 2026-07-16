@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "HealthConditions": [
+      "None"
+    ],
+    "Disabilities": []
+  },
+  {
+    "Id": 2,
+    "HealthConditions": [
+      "Mild asthma",
+      "Allergies"
+    ],
+    "Disabilities": []
+  }
+]
